@@ -16,12 +16,10 @@ const RegisterSection: React.FC = () => {
     e.preventDefault();
     
     if (authMethod === 'lightning') {
-      // Generate a mock Lightning authentication request
       const mockInvoice = 'lnbc10m1pvjluezpp5qqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqypq';
       setLightningInvoice(mockInvoice);
       setShowLightningModal(true);
     } else {
-      // Standard form submission
       toast({
         title: "Application Received",
         description: "We've received your application. We'll be in touch soon!",
@@ -47,63 +45,63 @@ const RegisterSection: React.FC = () => {
       
       <div className="container mx-auto relative z-10">
         <div className="text-center mb-16">
-          <h2 className="section-title">Register for the <span className="text-bitcoin">Hackathon</span></h2>
-          <p className="text-lg text-foreground/80 max-w-3xl mx-auto">
+          <h2 className="section-title text-white">Register for the <span className="text-bitcoin">Hackathon</span></h2>
+          <p className="text-lg text-white/90 max-w-3xl mx-auto">
             Join us for an unforgettable weekend of building, learning, and connecting with the Bitcoin community.
           </p>
         </div>
         
-        <div className="max-w-2xl mx-auto bg-dark-100 rounded-2xl p-8 border border-dark-300">
+        <div className="max-w-2xl mx-auto bg-dark-200 rounded-2xl p-8 border border-dark-300">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <label htmlFor="firstName" className="block text-sm font-medium text-foreground/80">
+                <label htmlFor="firstName" className="block text-sm font-medium text-white/80">
                   First Name
                 </label>
                 <Input
                   id="firstName"
                   placeholder="John"
-                  className="bg-dark-200 border-dark-300 focus:border-bitcoin"
+                  className="bg-dark-300 border-dark-300 text-white focus:border-bitcoin"
                   required
                 />
               </div>
               
               <div className="space-y-2">
-                <label htmlFor="lastName" className="block text-sm font-medium text-foreground/80">
+                <label htmlFor="lastName" className="block text-sm font-medium text-white/80">
                   Last Name
                 </label>
                 <Input
                   id="lastName"
                   placeholder="Doe"
-                  className="bg-dark-200 border-dark-300 focus:border-bitcoin"
+                  className="bg-dark-300 border-dark-300 text-white focus:border-bitcoin"
                   required
                 />
               </div>
             </div>
             
             <div className="space-y-2">
-              <label htmlFor="email" className="block text-sm font-medium text-foreground/80">
+              <label htmlFor="email" className="block text-sm font-medium text-white/80">
                 Email Address
               </label>
               <Input
                 id="email"
                 type="email"
                 placeholder="johndoe@example.com"
-                className="bg-dark-200 border-dark-300 focus:border-bitcoin"
+                className="bg-dark-300 border-dark-300 text-white focus:border-bitcoin"
                 required
               />
             </div>
             
             <div className="space-y-2">
-              <label htmlFor="experience" className="block text-sm font-medium text-foreground/80">
+              <label htmlFor="experience" className="block text-sm font-medium text-white/80">
                 Experience Level
               </label>
               <select
                 id="experience"
-                className="w-full rounded-md bg-dark-200 border-dark-300 focus:border-bitcoin p-2 text-foreground"
+                className="w-full rounded-md bg-dark-300 border-dark-300 text-white focus:border-bitcoin p-2"
                 required
               >
-                <option value="">Select your experience</option>
+                <option value="" className="text-gray-500">Select your experience</option>
                 <option value="beginner">Beginner (0-1 year)</option>
                 <option value="intermediate">Intermediate (1-3 years)</option>
                 <option value="advanced">Advanced (3-5 years)</option>
@@ -112,33 +110,33 @@ const RegisterSection: React.FC = () => {
             </div>
             
             <div className="space-y-2">
-              <label htmlFor="background" className="block text-sm font-medium text-foreground/80">
+              <label htmlFor="background" className="block text-sm font-medium text-white/80">
                 Background
               </label>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                 {["Developer", "Designer", "Product Manager", "Student", "Entrepreneur", "Other"].map((role) => (
-                  <label key={role} className="flex items-center space-x-2 bg-dark-200 p-3 rounded-lg cursor-pointer hover:bg-dark-300 transition-colors">
-                    <input type="checkbox" className="rounded border-dark-300" />
-                    <span>{role}</span>
+                  <label key={role} className="flex items-center space-x-2 bg-dark-300 p-3 rounded-lg cursor-pointer hover:bg-dark-200 transition-colors">
+                    <input type="checkbox" className="rounded border-dark-300 text-bitcoin focus:ring-bitcoin" />
+                    <span className="text-white">{role}</span>
                   </label>
                 ))}
               </div>
             </div>
             
             <div className="space-y-2">
-              <label htmlFor="motivation" className="block text-sm font-medium text-foreground/80">
+              <label htmlFor="motivation" className="block text-sm font-medium text-white/80">
                 Why do you want to join?
               </label>
               <Textarea
                 id="motivation"
                 placeholder="Tell us why you're interested in this hackathon and what you hope to build or learn..."
-                className="bg-dark-200 border-dark-300 focus:border-bitcoin min-h-[120px]"
+                className="bg-dark-300 border-dark-300 text-white focus:border-bitcoin min-h-[120px]"
                 required
               />
             </div>
             
             <div className="space-y-4">
-              <label className="block text-sm font-medium text-foreground/80 mb-2">
+              <label className="block text-sm font-medium text-white/80 mb-2">
                 How would you like to register?
               </label>
               <div className="grid grid-cols-2 gap-4">
@@ -148,8 +146,8 @@ const RegisterSection: React.FC = () => {
                   } rounded-lg cursor-pointer hover:bg-dark-200 transition-all`}
                   onClick={() => setAuthMethod('standard')}
                 >
-                  <CreditCard className="h-5 w-5 mr-2" />
-                  <span>Standard Form</span>
+                  <CreditCard className="h-5 w-5 mr-2 text-white" />
+                  <span className="text-white">Standard Form</span>
                 </div>
                 <div
                   className={`flex items-center justify-center p-4 border ${
@@ -158,7 +156,7 @@ const RegisterSection: React.FC = () => {
                   onClick={() => setAuthMethod('lightning')}
                 >
                   <Zap className="h-5 w-5 mr-2 text-bitcoin" />
-                  <span>Lightning Login</span>
+                  <span className="text-white">Lightning Login</span>
                 </div>
               </div>
             </div>
@@ -166,7 +164,7 @@ const RegisterSection: React.FC = () => {
             <div className="pt-4">
               <Button 
                 type="submit" 
-                className="w-full bg-bitcoin hover:bg-bitcoin-light text-white font-medium py-6"
+                className="w-full bg-bitcoin hover:bg-bitcoin-light text-black font-medium py-6"
               >
                 {authMethod === 'standard' ? 'Submit Application' : 'Login with Lightning'}
               </Button>
@@ -178,25 +176,25 @@ const RegisterSection: React.FC = () => {
       {/* Lightning Authentication Modal */}
       {showLightningModal && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
-          <div className="bg-dark-100 p-8 rounded-xl max-w-md w-full">
+          <div className="bg-dark-200 p-8 rounded-xl max-w-md w-full">
             <div className="text-center">
-              <h3 className="text-xl font-semibold mb-4">Login with Lightning</h3>
-              <p className="text-foreground/80 mb-6">Scan the QR code below to authenticate with Lightning</p>
+              <h3 className="text-xl font-semibold mb-4 text-white">Login with Lightning</h3>
+              <p className="text-white/80 mb-6">Scan the QR code below to authenticate with Lightning</p>
               
               <div className="bg-white p-4 rounded-lg mb-6 w-64 h-64 mx-auto flex items-center justify-center">
                 <QrCode className="w-full h-full text-dark" />
               </div>
               
               <div className="mb-6">
-                <p className="text-xs text-foreground/60 mb-2">Lightning Invoice:</p>
-                <div className="bg-dark-200 p-2 rounded overflow-x-scroll text-xs font-mono">
+                <p className="text-xs text-white/60 mb-2">Lightning Invoice:</p>
+                <div className="bg-dark-300 p-2 rounded overflow-x-scroll text-xs font-mono text-white">
                   {lightningInvoice}
                 </div>
               </div>
               
               <div className="space-y-3">
                 <Button
-                  className="w-full bg-bitcoin hover:bg-bitcoin-light flex items-center justify-center gap-2"
+                  className="w-full bg-bitcoin hover:bg-bitcoin-light flex items-center justify-center gap-2 text-black"
                   onClick={handleLightningAuthComplete}
                 >
                   <Zap className="h-4 w-4" />
@@ -204,7 +202,7 @@ const RegisterSection: React.FC = () => {
                 </Button>
                 <Button
                   variant="outline"
-                  className="w-full"
+                  className="w-full text-white border-white/20 hover:bg-dark-300"
                   onClick={() => setShowLightningModal(false)}
                 >
                   Cancel
@@ -219,3 +217,4 @@ const RegisterSection: React.FC = () => {
 };
 
 export default RegisterSection;
+
