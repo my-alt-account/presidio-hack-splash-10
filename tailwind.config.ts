@@ -19,6 +19,10 @@ const config: Config = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["Inter", "sans-serif"],
+        display: ["Manrope", "sans-serif"],
+      },
       colors: {
         border: "var(--border)",
         input: "var(--input)",
