@@ -16,7 +16,7 @@ const HeroSection: React.FC = () => {
       <div className="container mx-auto relative z-10">
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
           <div className="inline-flex items-center px-3 py-1 rounded-full bg-dark-100/80 border border-dark-300 mb-6">
-            <span className="text-bitcoin font-medium mr-2">June 15-17, 2025</span>
+            <span className="text-bitcoin font-medium mr-2">May 16-17, 2025</span>
             <span className="text-white/70">•</span>
             <span className="text-white/90 ml-2">Austin, Texas</span>
           </div>

@@ -5,45 +5,32 @@ const ScheduleSection: React.FC = () => {
   const schedule = [
     {
       day: "Day 1",
-      date: "June 15",
+      date: "May 16",
       events: [
-        { time: "8:00 AM", title: "Registration & Breakfast" },
-        { time: "9:30 AM", title: "Opening Ceremony" },
-        { time: "10:30 AM", title: "Team Formation & Idea Pitching" },
-        { time: "12:00 PM", title: "Lunch" },
-        { time: "1:00 PM", title: "Hacking Begins" },
-        { time: "3:00 PM", title: "Lightning Network Workshop" },
-        { time: "5:00 PM", title: "Mentor Session 1" },
-        { time: "7:00 PM", title: "Dinner" },
-        { time: "8:00 PM", title: "Late Night Hacking" },
+        { time: "6:00 PM", title: "Registration & Welcome" },
+        { time: "6:30 PM", title: "Opening Ceremony" },
+        { time: "7:00 PM", title: "Team Formation & Idea Pitching" },
+        { time: "8:00 PM", title: "Dinner" },
+        { time: "9:00 PM", title: "Lightning Network Workshop" },
+        { time: "10:30 PM", title: "Hacking Begins" },
+        { time: "11:00 PM", title: "Late Night Mentor Support" },
       ]
     },
     {
       day: "Day 2",
-      date: "June 16",
+      date: "May 17",
       events: [
         { time: "8:00 AM", title: "Breakfast" },
         { time: "9:00 AM", title: "Daily Standup" },
         { time: "10:00 AM", title: "Bitcoin Core Technical Talk" },
         { time: "12:00 PM", title: "Lunch" },
         { time: "1:00 PM", title: "Hacking Continues" },
-        { time: "3:00 PM", title: "Mentor Session 2" },
-        { time: "5:00 PM", title: "Project Progress Check-in" },
-        { time: "7:00 PM", title: "Dinner" },
-        { time: "8:00 PM", title: "Late Night Hacking" },
-      ]
-    },
-    {
-      day: "Day 3",
-      date: "June 17",
-      events: [
-        { time: "8:00 AM", title: "Breakfast" },
-        { time: "9:00 AM", title: "Final Preparations" },
-        { time: "12:00 PM", title: "Hacking Ends & Lunch" },
-        { time: "1:00 PM", title: "Project Presentations" },
-        { time: "4:00 PM", title: "Judges Deliberation" },
-        { time: "5:00 PM", title: "Awards Ceremony" },
-        { time: "6:30 PM", title: "Closing Remarks & Networking" },
+        { time: "3:00 PM", title: "Project Progress Check-in" },
+        { time: "5:00 PM", title: "Final Submissions Due" },
+        { time: "5:30 PM", title: "Project Presentations" },
+        { time: "7:00 PM", title: "Judges Deliberation & Dinner" },
+        { time: "8:00 PM", title: "Awards Ceremony" },
+        { time: "9:00 PM", title: "Closing Remarks & Networking" },
       ]
     }
   ];
@@ -54,11 +41,11 @@ const ScheduleSection: React.FC = () => {
         <div className="text-center mb-16">
           <h2 className="section-title text-white">Event <span className="text-bitcoin">Schedule</span></h2>
           <p className="text-lg text-white/90 max-w-3xl mx-auto">
-            Three days of intense building, learning, and connecting. Here's what to expect.
+            Two days of intense building, learning, and connecting. Here's what to expect.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 gap-8">
           {schedule.map((day, index) => (
             <div 
               key={index} 
