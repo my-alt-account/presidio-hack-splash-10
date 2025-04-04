@@ -1,5 +1,5 @@
+
 import React from 'react';
-import { Bitcoin } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
@@ -8,8 +8,12 @@ const Footer: React.FC = () => {
         <div className="grid md:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <Bitcoin className="h-6 w-6 text-bitcoin" />
-              <span className="font-display font-bold text-xl text-white">Bitcoin Hackathon</span>
+              <img 
+                src="/lovable-uploads/f93b766b-1946-4ed2-9232-4b501cc053d5.png" 
+                alt="Presidio Bitcoin Logo" 
+                className="h-8 w-8"
+              />
+              <span className="font-display font-bold text-xl text-white">Presidio Bitcoin Hackathon</span>
             </div>
             <p className="text-white/90 mb-6">
               The premier Bitcoin hackathon for builders and innovators.
@@ -57,7 +61,7 @@ const Footer: React.FC = () => {
         </div>
         
         <div className="border-t border-dark-300 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center text-white/80 text-sm">
-          <p>© 2025 Bitcoin Hackathon. All rights reserved.</p>
+          <p>© 2025 Presidio Bitcoin Hackathon. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="hover:text-bitcoin transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-bitcoin transition-colors">Terms of Service</a>
