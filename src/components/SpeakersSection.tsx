@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 
@@ -49,7 +48,12 @@ const SpeakersSection: React.FC = () => {
       imageUrl: "/lovable-uploads/7cf79b3f-6307-46d4-be98-9ae9d4b82644.png" 
     },
     { name: "Max Webster", role: "Founder", company: "Hivemind Ventures", imagePlaceholder: "MW" },
-    { name: "David King", role: "Investor & Creative Lead", company: "Founders You Should Know", imagePlaceholder: "DK" },
+    { 
+      name: "David King", 
+      role: "Investor & Creative Lead", 
+      company: "Founders You Should Know", 
+      imageUrl: "/lovable-uploads/6961ec1f-0c21-4019-a867-d62ebdd453b2.png" 
+    },
   ];
 
   return (
