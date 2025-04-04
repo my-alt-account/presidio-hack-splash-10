@@ -26,7 +26,7 @@ const AboutSection: React.FC = () => {
     <section id="about" className="section bg-dark-100">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="section-title">About The <span className="text-bitcoin">Hackathon</span></h2>
+          <h2 className="section-title text-white">About The <span className="text-bitcoin">Hackathon</span></h2>
           <p className="text-lg text-white/90 max-w-3xl mx-auto">
             Presidio Bitcoin Hackathon brings together developers, designers, and entrepreneurs to build the next generation of Bitcoin applications and infrastructure.
           </p>
