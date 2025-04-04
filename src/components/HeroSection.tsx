@@ -14,9 +14,21 @@ const HeroSection: React.FC = () => {
       </div>
 
       <div className="container mx-auto relative z-10">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          {/* Left side content */}
-          <div className="flex flex-col items-start text-left max-w-2xl">
+        <div className="flex flex-col items-center justify-between gap-8">
+          {/* Center aligned content */}
+          <div className="flex flex-col items-center text-center w-full max-w-4xl mx-auto">
+            {/* Image now appears at the top */}
+            <div className="w-full max-w-2xl mb-8">
+              <div className="relative rounded-xl overflow-hidden shadow-2xl">
+                <img 
+                  src="/lovable-uploads/5f563dc5-4295-4afe-9a4a-73cc9fe63005.png" 
+                  alt="Presidio with Golden Gate Bridge view" 
+                  className="w-full aspect-video object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-presidio/30 to-transparent"></div>
+              </div>
+            </div>
+            
             <div className="inline-flex items-center px-3 py-1 rounded-full bg-presidio/10 border border-presidio/20 mb-6">
               <span className="text-presidio font-medium mr-2">May 16-17, 2025</span>
               <span className="text-presidio/70">•</span>
@@ -29,7 +41,7 @@ const HeroSection: React.FC = () => {
               <span className="text-presidio-dark">Hackathon 2025</span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-presidio mb-10 max-w-2xl">
+            <p className="text-xl md:text-2xl text-presidio mb-10 max-w-2xl mx-auto">
               Join the premier Bitcoin hackathon to build, learn, and connect with the brightest minds in the Bitcoin ecosystem.
             </p>
             
@@ -50,18 +62,6 @@ const HeroSection: React.FC = () => {
               >
                 Learn More
               </Button>
-            </div>
-          </div>
-          
-          {/* Right side image */}
-          <div className="w-full md:w-2/5 mt-8 md:mt-0">
-            <div className="relative rounded-xl overflow-hidden shadow-2xl">
-              <img 
-                src="/lovable-uploads/5f563dc5-4295-4afe-9a4a-73cc9fe63005.png" 
-                alt="Presidio with Golden Gate Bridge view" 
-                className="w-full aspect-video object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-presidio/30 to-transparent"></div>
             </div>
           </div>
         </div>
