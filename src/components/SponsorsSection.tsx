@@ -15,7 +15,16 @@ const SponsorsSection: React.FC = () => {
         <div className="mb-16">
           <h3 className="text-2xl font-bold mb-8 text-center text-white">Gold Sponsors</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((i) => (
+            <div 
+              className="aspect-[3/1] rounded-xl bg-white border border-dark-300 flex items-center justify-center p-6"
+            >
+              <img 
+                src="/lovable-uploads/36ffa97f-4706-442b-bd0f-d0fc196d0f61.png" 
+                alt="Human Rights Foundation" 
+                className="max-h-full max-w-full object-contain"
+              />
+            </div>
+            {[1, 2].map((i) => (
               <div 
                 key={`gold-${i}`}
                 className="aspect-[3/1] rounded-xl bg-dark-200 border border-dark-300 flex items-center justify-center p-8"
