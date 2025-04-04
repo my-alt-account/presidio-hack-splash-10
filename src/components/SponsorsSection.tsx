@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const SponsorsSection: React.FC = () => {
@@ -24,14 +23,15 @@ const SponsorsSection: React.FC = () => {
                 className="max-h-full max-w-full object-contain"
               />
             </div>
-            {[1, 2].map((i) => (
-              <div 
-                key={`gold-${i}`}
-                className="aspect-[3/1] rounded-xl bg-dark-200 border border-dark-300 flex items-center justify-center p-8"
-              >
-                <div className="text-2xl font-bold text-bitcoin">Gold Sponsor</div>
-              </div>
-            ))}
+            <div 
+              className="aspect-[3/1] rounded-xl bg-white border border-dark-300 flex items-center justify-center p-6"
+            >
+              <img 
+                src="/lovable-uploads/22e8d730-c4f2-4a7c-acd1-98e996403216.png" 
+                alt="Lightspark" 
+                className="max-h-full max-w-full object-contain"
+              />
+            </div>
           </div>
         </div>
         
