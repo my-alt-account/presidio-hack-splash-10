@@ -1,20 +1,30 @@
 
 import React from 'react';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 
 interface SpeakerProps {
   name: string;
   role: string;
   company: string;
-  imagePlaceholder: string;
+  imagePlaceholder?: string;
+  imageUrl?: string;
 }
 
-const Speaker: React.FC<SpeakerProps> = ({ name, role, company, imagePlaceholder }) => {
+const Speaker: React.FC<SpeakerProps> = ({ name, role, company, imagePlaceholder, imageUrl }) => {
   return (
     <div className="group">
       <div className="aspect-square mb-4 bg-dark-200 rounded-xl overflow-hidden relative border border-dark-300 group-hover:border-bitcoin transition-colors">
-        <div className="absolute inset-0 flex items-center justify-center text-4xl font-bold text-dark-300">
-          {imagePlaceholder}
-        </div>
+        {imageUrl ? (
+          <img 
+            src={imageUrl} 
+            alt={name}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center text-4xl font-bold text-dark-300">
+            {imagePlaceholder}
+          </div>
+        )}
       </div>
       <h4 className="font-bold text-lg group-hover:text-bitcoin transition-colors text-white">{name}</h4>
       <p className="text-white/90">{role}</p>
@@ -32,7 +42,12 @@ const SpeakersSection: React.FC = () => {
   ];
 
   const judges = [
-    { name: "Steve Lee", role: "Investor & Lead", company: "Spiral", imagePlaceholder: "SL" },
+    { 
+      name: "Steve Lee", 
+      role: "Investor & Lead", 
+      company: "Spiral", 
+      imageUrl: "/lovable-uploads/7cf79b3f-6307-46d4-be98-9ae9d4b82644.png" 
+    },
     { name: "Max Webster", role: "Founder", company: "Hivemind Ventures", imagePlaceholder: "MW" },
     { name: "David King", role: "Investor & Creative Lead", company: "Founders You Should Know", imagePlaceholder: "DK" },
   ];
