@@ -32,9 +32,9 @@ const SpeakersSection: React.FC = () => {
   ];
 
   const judges = [
-    { name: "Robert Taylor", role: "Venture Partner", company: "Digital Currency Group", imagePlaceholder: "RT" },
-    { name: "Emily Watson", role: "CEO", company: "Bitcoin Alliance", imagePlaceholder: "EW" },
-    { name: "David Kim", role: "Professor", company: "MIT Digital Currency Initiative", imagePlaceholder: "DK" },
+    { name: "Steve Lee", role: "Investor & Lead", company: "Spiral", imagePlaceholder: "SL" },
+    { name: "Max Webster", role: "Founder", company: "Hivemind Ventures", imagePlaceholder: "MW" },
+    { name: "David King", role: "Investor & Creative Lead", company: "Founders You Should Know", imagePlaceholder: "DK" },
   ];
 
   return (
