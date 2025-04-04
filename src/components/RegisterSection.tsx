@@ -4,21 +4,20 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
-import { QrCode, Bitcoin, CreditCard } from 'lucide-react';
+import { QrCode, Bitcoin, CreditCard, Zap } from 'lucide-react';
 
 const RegisterSection: React.FC = () => {
   const { toast } = useToast();
-  const [paymentMethod, setPaymentMethod] = useState<'standard' | 'lightning'>('standard');
+  const [authMethod, setAuthMethod] = useState<'standard' | 'lightning'>('standard');
   const [showLightningModal, setShowLightningModal] = useState(false);
   const [lightningInvoice, setLightningInvoice] = useState('');
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (paymentMethod === 'lightning') {
-      // Generate a mock Lightning invoice for demo purposes
-      // In a real implementation, you would generate this server-side
-      const mockInvoice = 'lnbc10m1pvjluezsp5zyg3zyg3zyg3zyg3zyg3zyg3zyg3zyg3zyg3zyg3zyg3zyg3zygspp5qqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqypqdpl2pkx2ctnv5sxxmmwwd5kgetjypeh2ursdae8g6twvus8g6rfwvs8qun0dfjkxaqtwvus8g6rfwvs8qun0dfjkxaqtwvus8g6rfwvs8qun0dfjkxaqtwvus8g6rfwvs8qun0dfjkxaqtwvus8g6rfwvs8qun0dfjkxaqtwvus8g6rfwvs8qun0dfjkxaqx7ae';
+    if (authMethod === 'lightning') {
+      // Generate a mock Lightning authentication request
+      const mockInvoice = 'lnbc10m1pvjluezpp5qqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqypq';
       setLightningInvoice(mockInvoice);
       setShowLightningModal(true);
     } else {
@@ -31,11 +30,11 @@ const RegisterSection: React.FC = () => {
     }
   };
 
-  const handleLightningPaymentComplete = () => {
+  const handleLightningAuthComplete = () => {
     setShowLightningModal(false);
     toast({
-      title: "Lightning Payment Confirmed",
-      description: "Your Bitcoin Lightning payment has been confirmed. Welcome to the hackathon!",
+      title: "Lightning Authentication Successful",
+      description: "You've successfully authenticated with Lightning. Your hackathon registration is confirmed!",
       duration: 5000,
     });
   };
@@ -138,28 +137,28 @@ const RegisterSection: React.FC = () => {
               />
             </div>
             
-            <div className="space-y-2">
+            <div className="space-y-4">
               <label className="block text-sm font-medium text-foreground/80 mb-2">
-                Payment Method
+                How would you like to register?
               </label>
               <div className="grid grid-cols-2 gap-4">
                 <div
                   className={`flex items-center justify-center p-4 border ${
-                    paymentMethod === 'standard' ? 'border-bitcoin bg-dark-200' : 'border-dark-300'
+                    authMethod === 'standard' ? 'border-bitcoin bg-dark-200' : 'border-dark-300'
                   } rounded-lg cursor-pointer hover:bg-dark-200 transition-all`}
-                  onClick={() => setPaymentMethod('standard')}
+                  onClick={() => setAuthMethod('standard')}
                 >
                   <CreditCard className="h-5 w-5 mr-2" />
-                  <span>Standard</span>
+                  <span>Standard Form</span>
                 </div>
                 <div
                   className={`flex items-center justify-center p-4 border ${
-                    paymentMethod === 'lightning' ? 'border-bitcoin bg-dark-200' : 'border-dark-300'
+                    authMethod === 'lightning' ? 'border-bitcoin bg-dark-200' : 'border-dark-300'
                   } rounded-lg cursor-pointer hover:bg-dark-200 transition-all`}
-                  onClick={() => setPaymentMethod('lightning')}
+                  onClick={() => setAuthMethod('lightning')}
                 >
-                  <Bitcoin className="h-5 w-5 mr-2" />
-                  <span>Lightning</span>
+                  <Zap className="h-5 w-5 mr-2 text-bitcoin" />
+                  <span>Lightning Login</span>
                 </div>
               </div>
             </div>
@@ -169,20 +168,20 @@ const RegisterSection: React.FC = () => {
                 type="submit" 
                 className="w-full bg-bitcoin hover:bg-bitcoin-light text-white font-medium py-6"
               >
-                {paymentMethod === 'standard' ? 'Submit Application' : 'Pay with Lightning'}
+                {authMethod === 'standard' ? 'Submit Application' : 'Login with Lightning'}
               </Button>
             </div>
           </form>
         </div>
       </div>
 
-      {/* Lightning Payment Modal */}
+      {/* Lightning Authentication Modal */}
       {showLightningModal && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
           <div className="bg-dark-100 p-8 rounded-xl max-w-md w-full">
             <div className="text-center">
-              <h3 className="text-xl font-semibold mb-4">Pay with Lightning</h3>
-              <p className="text-foreground/80 mb-6">Scan the QR code below to complete your payment</p>
+              <h3 className="text-xl font-semibold mb-4">Login with Lightning</h3>
+              <p className="text-foreground/80 mb-6">Scan the QR code below to authenticate with Lightning</p>
               
               <div className="bg-white p-4 rounded-lg mb-6 w-64 h-64 mx-auto flex items-center justify-center">
                 <QrCode className="w-full h-full text-dark" />
@@ -195,19 +194,20 @@ const RegisterSection: React.FC = () => {
                 </div>
               </div>
               
-              <div className="flex space-x-4">
+              <div className="space-y-3">
+                <Button
+                  className="w-full bg-bitcoin hover:bg-bitcoin-light flex items-center justify-center gap-2"
+                  onClick={handleLightningAuthComplete}
+                >
+                  <Zap className="h-4 w-4" />
+                  I've Authenticated
+                </Button>
                 <Button
                   variant="outline"
-                  className="flex-1"
+                  className="w-full"
                   onClick={() => setShowLightningModal(false)}
                 >
                   Cancel
-                </Button>
-                <Button
-                  className="flex-1 bg-bitcoin hover:bg-bitcoin-light"
-                  onClick={handleLightningPaymentComplete}
-                >
-                  I've Paid
                 </Button>
               </div>
             </div>
