@@ -32,6 +32,15 @@ const SponsorsSection: React.FC = () => {
                 className="max-h-full max-w-full object-contain"
               />
             </div>
+            <div 
+              className="aspect-[3/1] rounded-xl bg-white border border-dark-300 flex items-center justify-center p-6"
+            >
+              <img 
+                src="/lovable-uploads/873dcdc1-9cba-4886-a6ba-0b17fcc1dcaf.png" 
+                alt="Block" 
+                className="max-h-full max-w-full object-contain"
+              />
+            </div>
           </div>
         </div>
         
