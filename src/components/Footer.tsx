@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Bitcoin } from 'lucide-react';
 
@@ -51,7 +50,7 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="font-bold mb-4 text-white">Contact</h3>
             <ul className="space-y-2">
-              <li className="text-white/90">Austin, TX</li>
+              <li className="text-white/90">Presidio, San Francisco</li>
               <li><a href="mailto:info@presidiohack.com" className="text-white/90 hover:text-bitcoin transition-colors">info@presidiohack.com</a></li>
             </ul>
           </div>
