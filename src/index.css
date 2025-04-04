@@ -8,12 +8,12 @@
 @layer base {
   :root {
     /* Background and Text Colors */
-    --background-dark: 100 33% 16%; /* Forest Green */
-    --text-light: 39 67% 96%; /* Cream color */
+    --background-light: 39 67% 96%; /* Cream color for background */
+    --text-dark: 100 33% 16%; /* Forest Green for text */
 
     /* Brand Colors */
-    --primary-color: 39 67% 90%; /* Light Cream */
-    --primary-light: 39 67% 96%; /* Lighter Cream */
+    --primary-color: 100 33% 16%; /* Forest Green */
+    --primary-dark: 100 33% 10%; /* Darker Green */
 
     /* Neutral Colors */
     --neutral-dark: 100 33% 10%;
@@ -30,12 +30,12 @@
   }
 
   body {
-    @apply bg-dark text-foreground font-sans;
+    @apply bg-cream text-presidio font-sans;
   }
 
   /* Typography */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display font-bold; /* Use Tailwind classes for display fonts */
+    @apply font-display font-bold text-presidio; /* Use Tailwind classes for display fonts */
   }
 }
 
@@ -53,6 +53,6 @@
   }
 
   .section-title {
-    @apply text-3xl md:text-4xl font-bold mb-6 md:mb-10;
+    @apply text-3xl md:text-4xl font-bold mb-6 md:mb-10 text-presidio;
   }
 }

@@ -29,20 +29,25 @@ const config: Config = {
         ring: "var(--ring)",
         background: "var(--background)",
         foreground: "var(--foreground)",
-        dark: {
-          DEFAULT: "hsl(var(--background-dark))",
-          100: "#1d472a", /* Slightly lighter green */
-          200: "#214f2e", /* Medium green */
-          300: "#286036", /* Lighter accent green */
+        cream: {
+          DEFAULT: "hsl(39, 67%, 96%)", /* Cream color */
+          light: "hsl(39, 67%, 99%)",
+          dark: "hsl(39, 30%, 90%)",
         },
         presidio: {
           DEFAULT: "#184520", /* Forest green */
           dark: "#0e2a13", /* Darker green */
           light: "#286036", /* Lighter green */
         },
-        cream: {
-          DEFAULT: "hsl(var(--primary-color))",
-          light: "hsl(var(--primary-light))",
+        dark: {
+          DEFAULT: "#184520", /* Forest green */
+          100: "#1d472a", /* Slightly lighter green */
+          200: "#214f2e", /* Medium green */
+          300: "#286036", /* Lighter accent green */
+        },
+        bitcoin: {
+          DEFAULT: "#f2a900",
+          light: "#ffc945",
         },
         primary: {
           DEFAULT: "hsl(var(--primary-color))",
