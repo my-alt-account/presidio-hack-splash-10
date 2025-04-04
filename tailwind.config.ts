@@ -1,3 +1,4 @@
+
 import { type Config } from "tailwindcss";
 
 const config: Config = {
@@ -30,11 +31,16 @@ const config: Config = {
         foreground: "var(--foreground)",
         dark: {
           DEFAULT: "hsl(var(--background-dark))",
-          100: "#151515",
-          200: "#1E1E1E",
-          300: "#252525",
+          100: "#1d472a", /* Slightly lighter green */
+          200: "#214f2e", /* Medium green */
+          300: "#286036", /* Lighter accent green */
         },
-        bitcoin: {
+        presidio: {
+          DEFAULT: "#184520", /* Forest green */
+          dark: "#0e2a13", /* Darker green */
+          light: "#286036", /* Lighter green */
+        },
+        cream: {
           DEFAULT: "hsl(var(--primary-color))",
           light: "hsl(var(--primary-light))",
         },
@@ -47,7 +53,7 @@ const config: Config = {
           foreground: "hsl(var(--neutral-light))",
         },
         accent: {
-          DEFAULT: "hsl(var(--accent-red))",
+          DEFAULT: "hsl(var(--accent-green))",
           foreground: "hsl(var(--primary-foreground))",
         },
         destructive: {

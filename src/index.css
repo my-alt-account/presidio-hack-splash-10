@@ -8,19 +8,19 @@
 @layer base {
   :root {
     /* Background and Text Colors */
-    --background-dark: 0 0% 6%;
-    --text-light: 0 0% 95%;
+    --background-dark: 100 33% 16%; /* Forest Green */
+    --text-light: 39 67% 96%; /* Cream color */
 
     /* Brand Colors */
-    --primary-color: 35 90% 55%;
-    --primary-light: 35 90% 65%;
+    --primary-color: 39 67% 90%; /* Light Cream */
+    --primary-light: 39 67% 96%; /* Lighter Cream */
 
     /* Neutral Colors */
-    --neutral-dark: 0 0% 13%;
-    --neutral-light: 0 0% 80%;
+    --neutral-dark: 100 33% 10%;
+    --neutral-light: 39 30% 90%;
 
     /* Accent Colors */
-    --accent-red: 0 84% 60%;
+    --accent-green: 100 33% 24%; /* Darker Green for accents */
   }
 }
 
@@ -40,8 +40,8 @@
 }
 
 @layer utilities {
-  .bitcoin-gradient {
-    @apply bg-gradient-to-r from-bitcoin to-bitcoin-light;
+  .presidio-gradient {
+    @apply bg-gradient-to-r from-presidio to-presidio-dark;
   }
 
   .container {
