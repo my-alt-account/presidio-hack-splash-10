@@ -29,22 +29,26 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
         dark: {
-          DEFAULT: "hsl(var(--background))",
+          DEFAULT: "hsl(var(--background-dark))",
           100: "#151515",
           200: "#1E1E1E",
           300: "#252525",
         },
         bitcoin: {
-          DEFAULT: "hsl(var(--primary))",
-          light: "#FFBC42",
+          DEFAULT: "hsl(var(--primary-color))",
+          light: "hsl(var(--primary-light))",
         },
         primary: {
-          DEFAULT: "hsl(var(--primary))",
+          DEFAULT: "hsl(var(--primary-color))",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          DEFAULT: "hsl(var(--neutral-dark))",
+          foreground: "hsl(var(--neutral-light))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent-red))",
+          foreground: "hsl(var(--primary-foreground))",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
@@ -53,10 +57,6 @@ const config: Config = {
         muted: {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
