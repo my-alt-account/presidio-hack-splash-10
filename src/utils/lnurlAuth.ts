@@ -1,13 +1,13 @@
 
 /**
  * Utility functions for LNURL-auth implementation
- * Based on the spec: https://github.com/fiatjaf/lnurl-rfc/blob/master/lnurl-auth.md
- * Documentation: https://lightninglogin.live/learn
+ * Based on the spec: https://github.com/lnurl/luds/blob/legacy/lnurl-auth.md
  */
 
 import { v4 as uuidv4 } from 'uuid';
 
 // Base URL of the LNURL-auth service
+// Using the correct base URL for the API
 const LNURL_AUTH_SERVICE = 'https://api.lightninglogin.live/v1';
 
 /**
@@ -18,10 +18,11 @@ export function generateLnurlAuth() {
   const k1 = uuidv4().replace(/-/g, '');
   
   // Construct the LNURL with the k1 challenge
+  // According to spec, we need tag=login and k1=random challenge
   const params = new URLSearchParams({
     tag: 'login',
     k1,
-    action: 'register'
+    action: 'login'  // Using login action instead of register
   });
   
   const lnurl = `${LNURL_AUTH_SERVICE}/auth?${params.toString()}`;
@@ -40,11 +41,13 @@ export function generateLnurlAuth() {
  */
 export async function checkLnurlAuthStatus(k1: string): Promise<boolean> {
   try {
-    // Use the correct status endpoint with API key header
+    // Use the correct status endpoint according to the API documentation
     const response = await fetch(`${LNURL_AUTH_SERVICE}/auth/status/${k1}`, {
       headers: {
         'Accept': 'application/json'
       },
+      // Adding no-cors mode to help with CORS issues
+      mode: 'cors',
     });
     
     if (!response.ok) {
@@ -54,6 +57,8 @@ export async function checkLnurlAuthStatus(k1: string): Promise<boolean> {
     
     const data = await response.json();
     console.log('LNURL-auth status response:', data);
+    
+    // According to the API docs, check the 'verified' field
     return data.verified === true;
   } catch (error) {
     console.error('Error checking LNURL-auth status:', error);

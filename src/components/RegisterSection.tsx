@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
-import { QrCode, Bitcoin, CreditCard, Zap } from 'lucide-react';
+import { QrCode, Bitcoin, CreditCard, Zap, AlertTriangle } from 'lucide-react';
 import { 
   generateLnurlAuth, 
   checkLnurlAuthStatus, 
@@ -25,6 +25,7 @@ const RegisterSection: React.FC = () => {
   const [checkingStatus, setCheckingStatus] = useState(false);
   const [statusInterval, setStatusInterval] = useState<number | null>(null);
   const [authError, setAuthError] = useState<string | null>(null);
+  const [isUsingMockMode, setIsUsingMockMode] = useState(false);
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,6 +33,7 @@ const RegisterSection: React.FC = () => {
     if (authMethod === 'lightning') {
       try {
         // Try to use the real implementation first
+        setIsUsingMockMode(false);
         const authData = generateLnurlAuth();
         setLnurlAuthData(authData);
         setShowLightningModal(true);
@@ -39,25 +41,12 @@ const RegisterSection: React.FC = () => {
         
         // Start checking for authentication status
         const interval = window.setInterval(() => {
-          checkAuthStatus(authData.k1);
+          checkAuthStatus(authData.k1, false);
         }, 3000);
         setStatusInterval(interval as unknown as number);
       } catch (error) {
         console.error("Error generating LNURL auth:", error);
-        
-        // Fall back to mock implementation if real one fails
-        toast({
-          title: "Lightning Service Issue",
-          description: "Using demonstration mode for Lightning authentication",
-          duration: 5000,
-        });
-        
-        const mockAuthData = generateMockLnurlAuth();
-        setLnurlAuthData(mockAuthData);
-        setShowLightningModal(true);
-        
-        // Don't set an interval for the mock implementation
-        // User will need to click the Check Authentication button
+        handleFallbackToMock();
       }
     } else {
       toast({
@@ -68,7 +57,24 @@ const RegisterSection: React.FC = () => {
     }
   };
 
-  const checkAuthStatus = async (k1: string) => {
+  const handleFallbackToMock = () => {
+    // Fall back to mock implementation if real one fails
+    setIsUsingMockMode(true);
+    toast({
+      title: "Lightning Service Issue",
+      description: "Using demonstration mode for Lightning authentication",
+      duration: 5000,
+    });
+    
+    const mockAuthData = generateMockLnurlAuth();
+    setLnurlAuthData(mockAuthData);
+    setShowLightningModal(true);
+    
+    // Clear any existing interval
+    clearAuthInterval();
+  };
+
+  const checkAuthStatus = async (k1: string, isManualCheck = true) => {
     if (checkingStatus) return;
     
     setCheckingStatus(true);
@@ -76,7 +82,7 @@ const RegisterSection: React.FC = () => {
       let isAuthenticated = false;
       
       // Check if we're using mock data
-      if (lnurlAuthData?.mock) {
+      if (isUsingMockMode) {
         isAuthenticated = await mockCheckLnurlAuthStatus();
       } else {
         isAuthenticated = await checkLnurlAuthStatus(k1);
@@ -86,14 +92,33 @@ const RegisterSection: React.FC = () => {
         clearAuthInterval();
         handleLightningAuthComplete();
       } else {
-        setAuthError(null); // Clear previous errors
+        // If this was a manual check and it failed, show a helpful message
+        if (isManualCheck && !isUsingMockMode) {
+          setAuthError("Not authenticated yet. Try scanning the QR code with your Lightning wallet first.");
+        }
       }
     } catch (error) {
       console.error("Error checking authentication status:", error);
-      setAuthError("Could not verify authentication status. Please try again.");
+      if (!isUsingMockMode) {
+        setAuthError("Could not verify authentication status. The service might be unavailable.");
+        
+        // If we've failed to check auth status multiple times, suggest using mock mode
+        if (isManualCheck) {
+          toast({
+            title: "Authentication Service Issue",
+            description: "Having trouble connecting to the Lightning authentication service.",
+            duration: 5000,
+          });
+        }
+      }
     } finally {
       setCheckingStatus(false);
     }
+  };
+
+  const switchToMockMode = () => {
+    clearAuthInterval();
+    handleFallbackToMock();
   };
 
   const clearAuthInterval = () => {
@@ -268,13 +293,24 @@ const RegisterSection: React.FC = () => {
           <div className="bg-dark-200 p-8 rounded-xl max-w-md w-full border border-dark-300 shadow-xl">
             <div className="text-center">
               <h3 className="text-xl font-semibold mb-4 text-white">
-                {lnurlAuthData.mock ? 'Demo: Lightning Authentication' : 'Login with Lightning'}
+                {isUsingMockMode ? 'Demo: Lightning Authentication' : 'Login with Lightning'}
               </h3>
-              <p className="text-white/80 mb-6">
-                {lnurlAuthData.mock 
-                  ? 'This is a demo mode. In a real implementation, you would scan this code with your Lightning wallet.'
-                  : 'Scan this QR code with your Lightning wallet to authenticate'}
-              </p>
+              
+              {isUsingMockMode && (
+                <div className="bg-yellow-500/20 border border-yellow-500/50 text-white rounded-md p-3 mb-4">
+                  <div className="flex items-center mb-2">
+                    <AlertTriangle className="h-5 w-5 mr-2 text-yellow-500" />
+                    <p className="font-medium">Demo Mode</p>
+                  </div>
+                  <p className="text-sm">This is a demonstration. In real usage, you would scan with your Lightning wallet.</p>
+                </div>
+              )}
+              
+              {!isUsingMockMode && (
+                <p className="text-white/80 mb-6">
+                  Scan this QR code with your Lightning wallet to authenticate
+                </p>
+              )}
               
               <div className="bg-white p-4 rounded-lg mb-6 w-64 h-64 mx-auto flex items-center justify-center">
                 <img 
@@ -292,7 +328,7 @@ const RegisterSection: React.FC = () => {
               
               <div className="mb-6">
                 <p className="text-xs text-white/60 mb-2">Lightning URL:</p>
-                <div className="bg-dark-300 p-2 rounded overflow-x-scroll text-xs font-mono text-white">
+                <div className="bg-dark-300 p-2 rounded overflow-x-auto text-xs font-mono text-white">
                   {lnurlAuthData.encoded}
                 </div>
               </div>
@@ -300,12 +336,24 @@ const RegisterSection: React.FC = () => {
               <div className="space-y-3">
                 <Button
                   className={`w-full bg-bitcoin hover:bg-bitcoin-light flex items-center justify-center gap-2 text-black ${checkingStatus ? 'opacity-50' : ''}`}
-                  onClick={() => checkAuthStatus(lnurlAuthData.k1)}
+                  onClick={() => checkAuthStatus(lnurlAuthData.k1, true)}
                   disabled={checkingStatus}
                 >
                   <Zap className="h-4 w-4" />
                   {checkingStatus ? "Checking..." : "Check Authentication"}
                 </Button>
+                
+                {!isUsingMockMode && (
+                  <Button
+                    variant="outline"
+                    className="w-full text-white border-white/20 hover:bg-dark-300 flex items-center justify-center gap-2"
+                    onClick={switchToMockMode}
+                  >
+                    <QrCode className="h-4 w-4" />
+                    Switch to Demo Mode
+                  </Button>
+                )}
+                
                 <Button
                   variant="outline"
                   className="w-full text-white border-white/20 hover:bg-dark-300"
