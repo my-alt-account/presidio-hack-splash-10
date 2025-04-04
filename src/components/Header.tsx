@@ -1,7 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
-import { Bitcoin } from "lucide-react";
 
 const Header: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -26,8 +24,12 @@ const Header: React.FC = () => {
     >
       <div className="container mx-auto py-4 flex justify-between items-center">
         <div className="flex items-center gap-2">
-          <Bitcoin className="h-6 w-6 text-bitcoin" />
-          <span className="font-display font-bold text-xl text-presidio">Presidio Hack</span>
+          <img 
+            src="/lovable-uploads/5c1da2ac-112d-4efe-a24f-fc69284209e2.png" 
+            alt="Presidio Bitcoin Hackathon Logo" 
+            className="h-8 w-8"
+          />
+          <span className="font-display font-bold text-xl text-presidio">Presidio Bitcoin Hackathon</span>
         </div>
         <nav className="hidden md:flex items-center gap-8">
           <a href="#about" className="text-presidio hover:text-bitcoin transition-colors">About</a>
