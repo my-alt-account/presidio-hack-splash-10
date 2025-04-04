@@ -16,8 +16,8 @@ const Speaker: React.FC<SpeakerProps> = ({ name, role, company, imagePlaceholder
           {imagePlaceholder}
         </div>
       </div>
-      <h4 className="font-bold text-lg group-hover:text-bitcoin transition-colors">{name}</h4>
-      <p className="text-foreground/70">{role}</p>
+      <h4 className="font-bold text-lg group-hover:text-bitcoin transition-colors text-white">{name}</h4>
+      <p className="text-white/90">{role}</p>
       <p className="text-bitcoin font-medium">{company}</p>
     </div>
   );
@@ -41,14 +41,14 @@ const SpeakersSection: React.FC = () => {
     <section id="speakers" className="section bg-dark-100">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="section-title">Speakers & <span className="text-bitcoin">Judges</span></h2>
-          <p className="text-lg text-foreground/80 max-w-3xl mx-auto">
+          <h2 className="section-title text-white">Speakers & <span className="text-bitcoin">Judges</span></h2>
+          <p className="text-lg text-white/90 max-w-3xl mx-auto">
             Learn from and get feedback from the best minds in the Bitcoin ecosystem.
           </p>
         </div>
 
         <div className="mb-16">
-          <h3 className="text-2xl font-bold mb-8 flex items-center">
+          <h3 className="text-2xl font-bold mb-8 flex items-center text-white">
             <span className="h-4 w-4 rounded-full bg-bitcoin mr-3"></span>
             Featured Speakers
           </h3>
@@ -60,7 +60,7 @@ const SpeakersSection: React.FC = () => {
         </div>
 
         <div>
-          <h3 className="text-2xl font-bold mb-8 flex items-center">
+          <h3 className="text-2xl font-bold mb-8 flex items-center text-white">
             <span className="h-4 w-4 rounded-full bg-bitcoin mr-3"></span>
             Judges
           </h3>

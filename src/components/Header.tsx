@@ -27,17 +27,17 @@ const Header: React.FC = () => {
       <div className="container mx-auto py-4 flex justify-between items-center">
         <div className="flex items-center gap-2">
           <Bitcoin className="h-6 w-6 text-bitcoin" />
-          <span className="font-display font-bold text-xl">Presidio Hack</span>
+          <span className="font-display font-bold text-xl text-white">Presidio Hack</span>
         </div>
         <nav className="hidden md:flex items-center gap-8">
-          <a href="#about" className="text-foreground/80 hover:text-bitcoin transition-colors">About</a>
-          <a href="#schedule" className="text-foreground/80 hover:text-bitcoin transition-colors">Schedule</a>
-          <a href="#speakers" className="text-foreground/80 hover:text-bitcoin transition-colors">Speakers</a>
-          <a href="#sponsors" className="text-foreground/80 hover:text-bitcoin transition-colors">Sponsors</a>
-          <a href="#faq" className="text-foreground/80 hover:text-bitcoin transition-colors">FAQ</a>
+          <a href="#about" className="text-white hover:text-bitcoin transition-colors">About</a>
+          <a href="#schedule" className="text-white hover:text-bitcoin transition-colors">Schedule</a>
+          <a href="#speakers" className="text-white hover:text-bitcoin transition-colors">Speakers</a>
+          <a href="#sponsors" className="text-white hover:text-bitcoin transition-colors">Sponsors</a>
+          <a href="#faq" className="text-white hover:text-bitcoin transition-colors">FAQ</a>
         </nav>
         <Button 
-          className="bg-bitcoin hover:bg-bitcoin-light text-white"
+          className="bg-bitcoin hover:bg-bitcoin-light text-black font-bold"
           onClick={() => document.getElementById('register')?.scrollIntoView({ behavior: 'smooth' })}
         >
           Register Now

@@ -52,8 +52,8 @@ const ScheduleSection: React.FC = () => {
     <section id="schedule" className="section">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="section-title">Event <span className="text-bitcoin">Schedule</span></h2>
-          <p className="text-lg text-foreground/80 max-w-3xl mx-auto">
+          <h2 className="section-title text-white">Event <span className="text-bitcoin">Schedule</span></h2>
+          <p className="text-lg text-white/90 max-w-3xl mx-auto">
             Three days of intense building, learning, and connecting. Here's what to expect.
           </p>
         </div>
@@ -67,7 +67,7 @@ const ScheduleSection: React.FC = () => {
               } overflow-hidden`}
             >
               <div className={`p-6 ${
-                index === 1 ? 'bg-bitcoin text-white' : 'bg-dark-200 text-foreground'
+                index === 1 ? 'bg-bitcoin text-black font-bold' : 'bg-dark-200 text-white'
               }`}>
                 <h3 className="text-2xl font-bold">{day.day}</h3>
                 <p>{day.date}, 2025</p>
@@ -77,9 +77,9 @@ const ScheduleSection: React.FC = () => {
                 <div className="space-y-6">
                   {day.events.map((event, eventIndex) => (
                     <div key={eventIndex} className="flex">
-                      <div className="w-20 flex-shrink-0 text-foreground/70">{event.time}</div>
+                      <div className="w-20 flex-shrink-0 text-bitcoin font-medium">{event.time}</div>
                       <div className="flex-grow pl-4 border-l-2 border-dark-300">
-                        <h4 className="font-medium">{event.title}</h4>
+                        <h4 className="font-medium text-white">{event.title}</h4>
                       </div>
                     </div>
                   ))}

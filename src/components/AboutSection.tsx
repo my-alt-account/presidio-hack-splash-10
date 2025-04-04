@@ -27,21 +27,21 @@ const AboutSection: React.FC = () => {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="section-title">About The <span className="text-bitcoin">Hackathon</span></h2>
-          <p className="text-lg text-foreground/80 max-w-3xl mx-auto">
+          <p className="text-lg text-white/90 max-w-3xl mx-auto">
             Presidio Bitcoin Hackathon brings together developers, designers, and entrepreneurs to build the next generation of Bitcoin applications and infrastructure.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 mb-16">
           <div>
-            <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
-            <p className="text-foreground/80 mb-6">
+            <h3 className="text-2xl font-bold mb-4 text-white">Our Mission</h3>
+            <p className="text-white/90 mb-6">
               Presidio Bitcoin is dedicated to advancing Bitcoin adoption through education, development, and community building. Our hackathon provides a platform for innovators to create solutions that leverage Bitcoin's potential.
             </p>
-            <p className="text-foreground/80 mb-6">
+            <p className="text-white/90 mb-6">
               Whether you're building on Lightning Network, developing wallets, creating smart contracts with RGB or Taproot, or exploring other Bitcoin technologies, this is your chance to make an impact.
             </p>
-            <a href="#register" className="inline-flex items-center text-bitcoin hover:underline">
+            <a href="#register" className="inline-flex items-center text-bitcoin hover:underline font-medium">
               Join the revolution <ArrowRight className="ml-2 h-4 w-4" />
             </a>
           </div>
@@ -52,8 +52,8 @@ const AboutSection: React.FC = () => {
                 key={index} 
                 className="bg-dark-200 p-6 rounded-lg border border-dark-300 hover:border-bitcoin/40 transition-colors"
               >
-                <h4 className="text-xl font-bold mb-2">{feature.title}</h4>
-                <p className="text-foreground/70">{feature.description}</p>
+                <h4 className="text-xl font-bold mb-2 text-white">{feature.title}</h4>
+                <p className="text-white/90">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -62,27 +62,27 @@ const AboutSection: React.FC = () => {
         <div className="bg-dark-200 p-8 md:p-12 rounded-xl border border-dark-300">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div>
-              <h3 className="text-2xl font-bold mb-2">Focus Areas</h3>
-              <p className="text-foreground/80">
+              <h3 className="text-2xl font-bold mb-2 text-white">Focus Areas</h3>
+              <p className="text-white/90">
                 This year, we're particularly interested in projects addressing:
               </p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="flex items-center bg-dark p-4 rounded-lg">
                 <span className="h-2 w-2 rounded-full bg-bitcoin mr-3"></span>
-                <span>Lightning Network Innovations</span>
+                <span className="text-white/90">Lightning Network Innovations</span>
               </div>
               <div className="flex items-center bg-dark p-4 rounded-lg">
                 <span className="h-2 w-2 rounded-full bg-bitcoin mr-3"></span>
-                <span>Privacy & Security</span>
+                <span className="text-white/90">Privacy & Security</span>
               </div>
               <div className="flex items-center bg-dark p-4 rounded-lg">
                 <span className="h-2 w-2 rounded-full bg-bitcoin mr-3"></span>
-                <span>Scaling Solutions</span>
+                <span className="text-white/90">Scaling Solutions</span>
               </div>
               <div className="flex items-center bg-dark p-4 rounded-lg">
                 <span className="h-2 w-2 rounded-full bg-bitcoin mr-3"></span>
-                <span>Developer Tools</span>
+                <span className="text-white/90">Developer Tools</span>
               </div>
             </div>
           </div>
