@@ -1,4 +1,3 @@
-
 import { type Config } from "tailwindcss";
 
 const config: Config = {
@@ -21,7 +20,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         sans: ["Inter", "sans-serif"],
-        display: ["Manrope", "sans-serif"],
+        display: ["Manrope", "sans-serif"], // This ensures `font-display` works
       },
       colors: {
         border: "var(--border)",
