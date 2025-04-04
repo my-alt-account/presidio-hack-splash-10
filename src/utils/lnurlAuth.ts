@@ -5,9 +5,9 @@
  */
 
 import { v4 as uuidv4 } from 'uuid';
+import * as lnurl from 'lnurl';
 
 // Base URL of the LNURL-auth service
-// Using the correct base URL for the API
 const LNURL_AUTH_SERVICE = 'https://api.lightninglogin.live/v1';
 
 /**
@@ -25,13 +25,19 @@ export function generateLnurlAuth() {
     action: 'login'  // Using login action instead of register
   });
   
-  const lnurl = `${LNURL_AUTH_SERVICE}/auth?${params.toString()}`;
+  const lnurlString = `${LNURL_AUTH_SERVICE}/auth?${params.toString()}`;
   
-  // Encode as bech32 for QR code (in production, we'd use a proper bech32 library)
-  // For this demo, we'll use the raw URL with the lightning: prefix
-  const encoded = `lightning:${lnurl}`;
+  // Properly encode as bech32 for QR code using the lnurl library
+  const encoded = lnurl.encode(lnurlString);
+  const fullEncodedUrl = `lightning:${encoded}`;
   
-  return { lnurl, k1, encoded };
+  console.log('Generated LNURL auth data:', { lnurl: lnurlString, encoded: fullEncodedUrl });
+  
+  return { 
+    lnurl: lnurlString, 
+    k1, 
+    encoded: fullEncodedUrl 
+  };
 }
 
 /**
@@ -46,7 +52,7 @@ export async function checkLnurlAuthStatus(k1: string): Promise<boolean> {
       headers: {
         'Accept': 'application/json'
       },
-      // Adding no-cors mode to help with CORS issues
+      // Using correct CORS mode
       mode: 'cors',
     });
     
@@ -72,10 +78,14 @@ export async function checkLnurlAuthStatus(k1: string): Promise<boolean> {
  */
 export function generateMockLnurlAuth() {
   const k1 = uuidv4().replace(/-/g, '');
+  // Create a properly formatted mock LNURL
+  const mockLnurl = `https://example.com/lnurl-auth?tag=login&k1=${k1}&action=login`;
+  const encodedMock = `lightning:${lnurl.encode(mockLnurl)}`;
+  
   return {
-    lnurl: `https://example.com/lnurl-auth?k1=${k1}`,
+    lnurl: mockLnurl,
     k1,
-    encoded: `lightning:lnurl1dp68gurn8ghj7urp0yh8xarpva8g7untd9kzcmvd9c82pf7xz6mfduhkcmrv9ewxumtdakxvurrwtr`,
+    encoded: encodedMock,
     mock: true
   };
 }
