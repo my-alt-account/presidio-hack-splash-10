@@ -1,18 +1,41 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
+import { QrCode, Bitcoin, CreditCard } from 'lucide-react';
 
 const RegisterSection: React.FC = () => {
   const { toast } = useToast();
+  const [paymentMethod, setPaymentMethod] = useState<'standard' | 'lightning'>('standard');
+  const [showLightningModal, setShowLightningModal] = useState(false);
+  const [lightningInvoice, setLightningInvoice] = useState('');
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (paymentMethod === 'lightning') {
+      // Generate a mock Lightning invoice for demo purposes
+      // In a real implementation, you would generate this server-side
+      const mockInvoice = 'lnbc10m1pvjluezsp5zyg3zyg3zyg3zyg3zyg3zyg3zyg3zyg3zyg3zyg3zyg3zyg3zygspp5qqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqypqdpl2pkx2ctnv5sxxmmwwd5kgetjypeh2ursdae8g6twvus8g6rfwvs8qun0dfjkxaqtwvus8g6rfwvs8qun0dfjkxaqtwvus8g6rfwvs8qun0dfjkxaqtwvus8g6rfwvs8qun0dfjkxaqtwvus8g6rfwvs8qun0dfjkxaqtwvus8g6rfwvs8qun0dfjkxaqx7ae';
+      setLightningInvoice(mockInvoice);
+      setShowLightningModal(true);
+    } else {
+      // Standard form submission
+      toast({
+        title: "Application Received",
+        description: "We've received your application. We'll be in touch soon!",
+        duration: 5000,
+      });
+    }
+  };
+
+  const handleLightningPaymentComplete = () => {
+    setShowLightningModal(false);
     toast({
-      title: "Application Received",
-      description: "We've received your application. We'll be in touch soon!",
+      title: "Lightning Payment Confirmed",
+      description: "Your Bitcoin Lightning payment has been confirmed. Welcome to the hackathon!",
       duration: 5000,
     });
   };
@@ -115,17 +138,82 @@ const RegisterSection: React.FC = () => {
               />
             </div>
             
+            <div className="space-y-2">
+              <label className="block text-sm font-medium text-foreground/80 mb-2">
+                Payment Method
+              </label>
+              <div className="grid grid-cols-2 gap-4">
+                <div
+                  className={`flex items-center justify-center p-4 border ${
+                    paymentMethod === 'standard' ? 'border-bitcoin bg-dark-200' : 'border-dark-300'
+                  } rounded-lg cursor-pointer hover:bg-dark-200 transition-all`}
+                  onClick={() => setPaymentMethod('standard')}
+                >
+                  <CreditCard className="h-5 w-5 mr-2" />
+                  <span>Standard</span>
+                </div>
+                <div
+                  className={`flex items-center justify-center p-4 border ${
+                    paymentMethod === 'lightning' ? 'border-bitcoin bg-dark-200' : 'border-dark-300'
+                  } rounded-lg cursor-pointer hover:bg-dark-200 transition-all`}
+                  onClick={() => setPaymentMethod('lightning')}
+                >
+                  <Bitcoin className="h-5 w-5 mr-2" />
+                  <span>Lightning</span>
+                </div>
+              </div>
+            </div>
+            
             <div className="pt-4">
               <Button 
                 type="submit" 
                 className="w-full bg-bitcoin hover:bg-bitcoin-light text-white font-medium py-6"
               >
-                Submit Application
+                {paymentMethod === 'standard' ? 'Submit Application' : 'Pay with Lightning'}
               </Button>
             </div>
           </form>
         </div>
       </div>
+
+      {/* Lightning Payment Modal */}
+      {showLightningModal && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+          <div className="bg-dark-100 p-8 rounded-xl max-w-md w-full">
+            <div className="text-center">
+              <h3 className="text-xl font-semibold mb-4">Pay with Lightning</h3>
+              <p className="text-foreground/80 mb-6">Scan the QR code below to complete your payment</p>
+              
+              <div className="bg-white p-4 rounded-lg mb-6 w-64 h-64 mx-auto flex items-center justify-center">
+                <QrCode className="w-full h-full text-dark" />
+              </div>
+              
+              <div className="mb-6">
+                <p className="text-xs text-foreground/60 mb-2">Lightning Invoice:</p>
+                <div className="bg-dark-200 p-2 rounded overflow-x-scroll text-xs font-mono">
+                  {lightningInvoice}
+                </div>
+              </div>
+              
+              <div className="flex space-x-4">
+                <Button
+                  variant="outline"
+                  className="flex-1"
+                  onClick={() => setShowLightningModal(false)}
+                >
+                  Cancel
+                </Button>
+                <Button
+                  className="flex-1 bg-bitcoin hover:bg-bitcoin-light"
+                  onClick={handleLightningPaymentComplete}
+                >
+                  I've Paid
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
