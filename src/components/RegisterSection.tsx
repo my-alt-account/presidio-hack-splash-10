@@ -4,7 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
 import { Upload } from 'lucide-react';
-import { supabase } from '@/integrations/supabase/client';
+import { supabase, sanitizeFileName } from '@/integrations/supabase/client';
 import { useForm } from 'react-hook-form';
 import { 
   Form,
@@ -52,7 +52,6 @@ const RegisterSection: React.FC = () => {
     if (e.target.files && e.target.files.length > 0) {
       const file = e.target.files[0];
       
-      // Validate file size
       if (file.size > MAX_FILE_SIZE) {
         toast({
           title: "File Too Large",
@@ -60,12 +59,11 @@ const RegisterSection: React.FC = () => {
           variant: "destructive",
           duration: 5000,
         });
-        e.target.value = ''; // Clear the file input
+        e.target.value = '';
         setResumeFile(null);
         return;
       }
 
-      // Validate file type
       const fileExtension = '.' + file.name.split('.').pop()?.toLowerCase();
       if (!ALLOWED_FILE_TYPES.includes(fileExtension)) {
         toast({
@@ -74,7 +72,7 @@ const RegisterSection: React.FC = () => {
           variant: "destructive",
           duration: 5000,
         });
-        e.target.value = ''; // Clear the file input
+        e.target.value = '';
         setResumeFile(null);
         return;
       }
@@ -89,10 +87,8 @@ const RegisterSection: React.FC = () => {
     try {
       let resumeUrl = null;
       
-      // Upload resume file if it exists
       if (resumeFile) {
-        const fileExt = resumeFile.name.split('.').pop();
-        const fileName = `${Math.random().toString(36).substring(2)}.${fileExt}`;
+        const fileName = sanitizeFileName(resumeFile.name);
         
         const { data: fileData, error: fileError } = await supabase.storage
           .from('resumes')
@@ -102,12 +98,10 @@ const RegisterSection: React.FC = () => {
           throw new Error(`Error uploading resume: ${fileError.message}`);
         }
         
-        // Get public URL for the uploaded file
         const { data } = supabase.storage.from('resumes').getPublicUrl(fileName);
         resumeUrl = data.publicUrl;
       }
       
-      // Insert application data into the database
       const { error: insertError } = await supabase
         .from('hackathon_applications')
         .insert({
@@ -124,14 +118,12 @@ const RegisterSection: React.FC = () => {
         throw new Error(`Error submitting application: ${insertError.message}`);
       }
       
-      // Show success message
       toast({
         title: "Application Submitted Successfully",
         description: "Thank you for your application! We'll be in touch soon.",
         duration: 5000,
       });
       
-      // Reset form
       form.reset();
       setResumeFile(null);
       
@@ -301,7 +293,6 @@ const RegisterSection: React.FC = () => {
                 )}
               />
               
-              {/* Resume upload section */}
               <div className="space-y-2">
                 <label htmlFor="resume" className="block text-sm font-medium text-white/80">
                   Resume (Optional)
