@@ -2,7 +2,7 @@
 import React from 'react';
 
 const SponsorsSection: React.FC = () => {
-  // Current sponsors (7 actual sponsors with logos)
+  // Current sponsors (10 actual sponsors with logos)
   const sponsors = [
     {
       name: "Human Rights Foundation",
@@ -31,16 +31,20 @@ const SponsorsSection: React.FC = () => {
     {
       name: "Hivemind Ventures",
       logo: "/lovable-uploads/16b945cb-e5fe-4725-af2a-33f28376e526.png"
+    },
+    {
+      name: "OpenSecret",
+      logo: "/lovable-uploads/3b1f330e-1cdb-48ab-ba8d-6c50f565c3f3.png"
+    },
+    {
+      name: "Lightning Labs",
+      logo: "/lovable-uploads/f050b4d9-0e97-435b-9381-313d98912f5a.png"
+    },
+    {
+      name: "OpenAgents",
+      logo: "/lovable-uploads/29479c47-1b55-478e-9da4-5f93ba4c8052.png"
     }
   ];
-
-  // Generate empty sponsor placeholders to make 10 total
-  const emptySponsors = Array(3).fill(null).map((_, index) => ({
-    name: `Sponsor ${index + 8}`,
-    logo: null
-  }));
-
-  const allSponsors = [...sponsors, ...emptySponsors];
 
   return (
     <section id="sponsors" className="section bg-dark-100">
@@ -53,20 +57,16 @@ const SponsorsSection: React.FC = () => {
         </div>
         
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-16">
-          {allSponsors.map((sponsor, index) => (
+          {sponsors.map((sponsor, index) => (
             <div 
               key={`sponsor-${index}`}
               className="aspect-square rounded-xl bg-white border border-dark-300 flex items-center justify-center p-6 hover:border-bitcoin transition-colors"
             >
-              {sponsor.logo ? (
-                <img 
-                  src={sponsor.logo} 
-                  alt={sponsor.name} 
-                  className="max-h-full max-w-full object-contain"
-                />
-              ) : (
-                <div className="text-lg font-bold text-dark-100/60">Available</div>
-              )}
+              <img 
+                src={sponsor.logo} 
+                alt={sponsor.name} 
+                className="max-h-full max-w-full object-contain"
+              />
             </div>
           ))}
         </div>
