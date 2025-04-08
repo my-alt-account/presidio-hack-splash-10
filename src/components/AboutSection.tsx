@@ -26,7 +26,7 @@ const AboutSection: React.FC = () => {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="section-title text-white">
-            About The <span className="text-bitcoin">Hackathon</span>
+            <span className="text-bitcoin">About The Hackathon</span>
           </h2>
           <p className="text-lg text-white/90 max-w-3xl mx-auto">
             Bitcoin Hackathon brings together developers, designers, and entrepreneurs to build the next generation of Bitcoin applications and infrastructure.
