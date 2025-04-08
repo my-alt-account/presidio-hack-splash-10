@@ -66,7 +66,9 @@ const SpeakersSection: React.FC = () => {
     <section id="speakers" className="section bg-dark-100">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="section-title text-white">Speakers & <span className="text-bitcoin">Judges</span></h2>
+          <h2 className="section-title text-white">
+            <span className="text-bitcoin">Speakers</span> & Judges
+          </h2>
           <p className="text-lg text-white/90 max-w-3xl mx-auto">
             Learn from and get feedback from the best minds in the Bitcoin ecosystem.
           </p>
@@ -75,7 +77,7 @@ const SpeakersSection: React.FC = () => {
         <div className="mb-16">
           <h3 className="text-2xl font-bold mb-8 flex items-center text-white">
             <span className="h-4 w-4 rounded-full bg-bitcoin mr-3"></span>
-            <span className="text-bitcoin">Featured Speakers</span>
+            Featured Speakers
           </h3>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
             {speakers.map((speaker, index) => (
