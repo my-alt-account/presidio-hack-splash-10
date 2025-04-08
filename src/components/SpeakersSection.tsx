@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 
@@ -66,9 +65,7 @@ const SpeakersSection: React.FC = () => {
     <section id="speakers" className="section bg-dark-100">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="section-title text-white">
-            <span className="text-bitcoin">Speakers</span> & Judges
-          </h2>
+          <h2 className="section-title text-white">Speakers & Judges</h2>
           <p className="text-lg text-white/90 max-w-3xl mx-auto">
             Learn from and get feedback from the best minds in the Bitcoin ecosystem.
           </p>
