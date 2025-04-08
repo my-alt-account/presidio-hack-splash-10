@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -18,7 +17,9 @@ import {
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-// Define the form validation schema
+const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB
+const ALLOWED_FILE_TYPES = ['.pdf', '.doc', '.docx'];
+
 const formSchema = z.object({
   firstName: z.string().min(1, { message: 'First name is required' }),
   lastName: z.string().min(1, { message: 'Last name is required' }),
@@ -49,7 +50,36 @@ const RegisterSection: React.FC = () => {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
-      setResumeFile(e.target.files[0]);
+      const file = e.target.files[0];
+      
+      // Validate file size
+      if (file.size > MAX_FILE_SIZE) {
+        toast({
+          title: "File Too Large",
+          description: `Please upload a file smaller than 5MB. Current file is ${(file.size / 1024 / 1024).toFixed(2)} MB.`,
+          variant: "destructive",
+          duration: 5000,
+        });
+        e.target.value = ''; // Clear the file input
+        setResumeFile(null);
+        return;
+      }
+
+      // Validate file type
+      const fileExtension = '.' + file.name.split('.').pop()?.toLowerCase();
+      if (!ALLOWED_FILE_TYPES.includes(fileExtension)) {
+        toast({
+          title: "Invalid File Type",
+          description: `Please upload a PDF, DOC, or DOCX file. Current file type is ${fileExtension}`,
+          variant: "destructive",
+          duration: 5000,
+        });
+        e.target.value = ''; // Clear the file input
+        setResumeFile(null);
+        return;
+      }
+
+      setResumeFile(file);
     }
   };
   
