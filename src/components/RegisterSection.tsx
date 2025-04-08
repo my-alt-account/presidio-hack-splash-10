@@ -4,17 +4,29 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
-import { Bitcoin, CreditCard } from 'lucide-react';
+import { Upload } from 'lucide-react';
 
 const RegisterSection: React.FC = () => {
   const { toast } = useToast();
+  const [resumeFile, setResumeFile] = useState<File | null>(null);
+  
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setResumeFile(e.target.files[0]);
+    }
+  };
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
+    // In a real application, you would upload the file to a server here
+    // For now we'll just display a toast with the file name if it exists
+    
     toast({
       title: "Application Received",
-      description: "We've received your application. We'll be in touch soon!",
+      description: resumeFile 
+        ? `We've received your application and resume (${resumeFile.name}). We'll be in touch soon!`
+        : "We've received your application. We'll be in touch soon!",
       duration: 5000,
     });
   };
@@ -115,6 +127,35 @@ const RegisterSection: React.FC = () => {
                 className="bg-dark-300 border-dark-300 text-white focus:border-bitcoin min-h-[120px] placeholder:text-white/50"
                 required
               />
+            </div>
+            
+            {/* Resume upload section */}
+            <div className="space-y-2">
+              <label htmlFor="resume" className="block text-sm font-medium text-white/80">
+                Resume (Optional)
+              </label>
+              <div className="flex items-center gap-4">
+                <label 
+                  htmlFor="resume" 
+                  className="flex items-center gap-2 px-4 py-2 rounded-md bg-dark-300 text-white border border-dark-400 hover:bg-dark-400 cursor-pointer transition-colors"
+                >
+                  <Upload size={18} />
+                  <span>Choose file</span>
+                </label>
+                <span className="text-white/70 text-sm">
+                  {resumeFile ? resumeFile.name : "No file chosen"}
+                </span>
+              </div>
+              <input
+                type="file"
+                id="resume"
+                accept=".pdf,.doc,.docx"
+                className="hidden"
+                onChange={handleFileChange}
+              />
+              <p className="text-xs text-white/60 mt-1">
+                Accepted formats: PDF, DOC, DOCX (Max 5MB)
+              </p>
             </div>
             
             <div className="pt-4">
