@@ -1,154 +1,22 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
-import { QrCode, Bitcoin, CreditCard, Zap, AlertTriangle } from 'lucide-react';
-import { 
-  generateLnurlAuth, 
-  checkLnurlAuthStatus, 
-  generateMockLnurlAuth, 
-  mockCheckLnurlAuthStatus 
-} from '@/utils/lnurlAuth';
+import { Bitcoin, CreditCard } from 'lucide-react';
 
 const RegisterSection: React.FC = () => {
   const { toast } = useToast();
-  const [authMethod, setAuthMethod] = useState<'standard' | 'lightning'>('standard');
-  const [showLightningModal, setShowLightningModal] = useState(false);
-  const [lnurlAuthData, setLnurlAuthData] = useState<{
-    lnurl: string;
-    k1: string;
-    encoded: string;
-    mock?: boolean;
-  } | null>(null);
-  const [checkingStatus, setCheckingStatus] = useState(false);
-  const [statusInterval, setStatusInterval] = useState<number | null>(null);
-  const [authError, setAuthError] = useState<string | null>(null);
-  const [isUsingMockMode, setIsUsingMockMode] = useState(false);
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (authMethod === 'lightning') {
-      try {
-        // Try to use the real implementation first
-        setIsUsingMockMode(false);
-        const authData = generateLnurlAuth();
-        setLnurlAuthData(authData);
-        setShowLightningModal(true);
-        setAuthError(null);
-        
-        // Start checking for authentication status
-        const interval = window.setInterval(() => {
-          checkAuthStatus(authData.k1, false);
-        }, 3000);
-        setStatusInterval(interval as unknown as number);
-      } catch (error) {
-        console.error("Error generating LNURL auth:", error);
-        handleFallbackToMock();
-      }
-    } else {
-      toast({
-        title: "Application Received",
-        description: "We've received your application. We'll be in touch soon!",
-        duration: 5000,
-      });
-    }
-  };
-
-  const handleFallbackToMock = () => {
-    // Fall back to mock implementation if real one fails
-    setIsUsingMockMode(true);
     toast({
-      title: "Lightning Service Issue",
-      description: "Using demonstration mode for Lightning authentication",
+      title: "Application Received",
+      description: "We've received your application. We'll be in touch soon!",
       duration: 5000,
     });
-    
-    const mockAuthData = generateMockLnurlAuth();
-    setLnurlAuthData(mockAuthData);
-    setShowLightningModal(true);
-    
-    // Clear any existing interval
-    clearAuthInterval();
-  };
-
-  const checkAuthStatus = async (k1: string, isManualCheck = true) => {
-    if (checkingStatus) return;
-    
-    setCheckingStatus(true);
-    try {
-      let isAuthenticated = false;
-      
-      // Check if we're using mock data
-      if (isUsingMockMode) {
-        isAuthenticated = await mockCheckLnurlAuthStatus();
-      } else {
-        isAuthenticated = await checkLnurlAuthStatus(k1);
-      }
-      
-      if (isAuthenticated) {
-        clearAuthInterval();
-        handleLightningAuthComplete();
-      } else {
-        // If this was a manual check and it failed, show a helpful message
-        if (isManualCheck && !isUsingMockMode) {
-          setAuthError("Not authenticated yet. Try scanning the QR code with your Lightning wallet first.");
-        }
-      }
-    } catch (error) {
-      console.error("Error checking authentication status:", error);
-      if (!isUsingMockMode) {
-        setAuthError("Could not verify authentication status. The service might be unavailable.");
-        
-        // If we've failed to check auth status multiple times, suggest using mock mode
-        if (isManualCheck) {
-          toast({
-            title: "Authentication Service Issue",
-            description: "Having trouble connecting to the Lightning authentication service.",
-            duration: 5000,
-          });
-        }
-      }
-    } finally {
-      setCheckingStatus(false);
-    }
-  };
-
-  const switchToMockMode = () => {
-    clearAuthInterval();
-    handleFallbackToMock();
-  };
-
-  const clearAuthInterval = () => {
-    if (statusInterval !== null) {
-      window.clearInterval(statusInterval);
-      setStatusInterval(null);
-    }
-  };
-
-  // Clean up interval on unmount
-  useEffect(() => {
-    return () => {
-      if (statusInterval !== null) {
-        window.clearInterval(statusInterval);
-      }
-    };
-  }, [statusInterval]);
-
-  const handleLightningAuthComplete = () => {
-    setShowLightningModal(false);
-    toast({
-      title: "Lightning Authentication Successful",
-      description: "You've successfully authenticated with Lightning. Your hackathon registration is confirmed!",
-      duration: 5000,
-    });
-  };
-
-  const handleCancel = () => {
-    clearAuthInterval();
-    setShowLightningModal(false);
   };
 
   return (
@@ -249,123 +117,17 @@ const RegisterSection: React.FC = () => {
               />
             </div>
             
-            <div className="space-y-4">
-              <label className="block text-sm font-medium text-white mb-2">
-                How would you like to register?
-              </label>
-              <div className="grid grid-cols-2 gap-4">
-                <div
-                  className={`flex items-center justify-center p-4 border ${
-                    authMethod === 'standard' ? 'border-bitcoin bg-dark-300' : 'border-dark-300'
-                  } rounded-lg cursor-pointer hover:bg-dark-400 transition-all`}
-                  onClick={() => setAuthMethod('standard')}
-                >
-                  <CreditCard className="h-5 w-5 mr-2 text-white" />
-                  <span className="text-white">Standard Form</span>
-                </div>
-                <div
-                  className={`flex items-center justify-center p-4 border ${
-                    authMethod === 'lightning' ? 'border-bitcoin bg-dark-300' : 'border-dark-300'
-                  } rounded-lg cursor-pointer hover:bg-dark-400 transition-all`}
-                  onClick={() => setAuthMethod('lightning')}
-                >
-                  <Zap className="h-5 w-5 mr-2 text-bitcoin" />
-                  <span className="text-white">Lightning Login</span>
-                </div>
-              </div>
-            </div>
-            
             <div className="pt-4">
               <Button 
                 type="submit" 
                 className="w-full bg-bitcoin hover:bg-bitcoin-light text-black font-medium py-6"
               >
-                {authMethod === 'standard' ? 'Submit Application' : 'Login with Lightning'}
+                Submit Application
               </Button>
             </div>
           </form>
         </div>
       </div>
-
-      {/* Lightning Authentication Modal */}
-      {showLightningModal && lnurlAuthData && (
-        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 backdrop-blur-sm">
-          <div className="bg-dark-200 p-8 rounded-xl max-w-md w-full border border-dark-300 shadow-xl">
-            <div className="text-center">
-              <h3 className="text-xl font-semibold mb-4 text-white">
-                {isUsingMockMode ? 'Demo: Lightning Authentication' : 'Login with Lightning'}
-              </h3>
-              
-              {isUsingMockMode && (
-                <div className="bg-yellow-500/20 border border-yellow-500/50 text-white rounded-md p-3 mb-4">
-                  <div className="flex items-center mb-2">
-                    <AlertTriangle className="h-5 w-5 mr-2 text-yellow-500" />
-                    <p className="font-medium">Demo Mode</p>
-                  </div>
-                  <p className="text-sm">This is a demonstration. In real usage, you would scan with your Lightning wallet.</p>
-                </div>
-              )}
-              
-              {!isUsingMockMode && (
-                <p className="text-white/80 mb-6">
-                  Scan this QR code with your Lightning wallet to authenticate
-                </p>
-              )}
-              
-              <div className="bg-white p-4 rounded-lg mb-6 w-64 h-64 mx-auto flex items-center justify-center">
-                <img 
-                  src={`https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(lnurlAuthData.encoded)}&size=250x250&margin=10`} 
-                  alt="LNURL Auth QR Code"
-                  className="max-w-full"
-                />
-              </div>
-              
-              {authError && (
-                <div className="bg-red-500/20 border border-red-500/50 text-white rounded-md p-3 mb-4">
-                  <p>{authError}</p>
-                </div>
-              )}
-              
-              <div className="mb-6">
-                <p className="text-xs text-white/60 mb-2">Lightning URL:</p>
-                <div className="bg-dark-300 p-2 rounded overflow-x-auto text-xs font-mono text-white">
-                  {lnurlAuthData.encoded}
-                </div>
-              </div>
-              
-              <div className="space-y-3">
-                <Button
-                  className={`w-full bg-bitcoin hover:bg-bitcoin-light flex items-center justify-center gap-2 text-black ${checkingStatus ? 'opacity-50' : ''}`}
-                  onClick={() => checkAuthStatus(lnurlAuthData.k1, true)}
-                  disabled={checkingStatus}
-                >
-                  <Zap className="h-4 w-4" />
-                  {checkingStatus ? "Checking..." : "Check Authentication"}
-                </Button>
-                
-                {!isUsingMockMode && (
-                  <Button
-                    variant="outline"
-                    className="w-full text-white border-white/20 hover:bg-dark-300 flex items-center justify-center gap-2"
-                    onClick={switchToMockMode}
-                  >
-                    <QrCode className="h-4 w-4" />
-                    Switch to Demo Mode
-                  </Button>
-                )}
-                
-                <Button
-                  variant="outline"
-                  className="w-full text-white border-white/20 hover:bg-dark-300"
-                  onClick={handleCancel}
-                >
-                  Cancel
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 };
