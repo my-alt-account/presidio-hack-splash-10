@@ -9,7 +9,7 @@ const SponsorsSection: React.FC = () => {
     },
     {
       name: "Lightspark",
-      logo: "/lovable-uploads/22e8d730-c4f2-4a7c-acd1-98e996403216.png"
+      logo: "/lovable-uploads/30544c8d-49b1-4fbf-b7d0-7afa665d7f1f.png"
     },
     {
       name: "Block",
