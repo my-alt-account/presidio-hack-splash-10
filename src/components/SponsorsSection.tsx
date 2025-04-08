@@ -1,6 +1,31 @@
+
 import React from 'react';
 
 const SponsorsSection: React.FC = () => {
+  // Current sponsors (3 actual sponsors with logos)
+  const sponsors = [
+    {
+      name: "Human Rights Foundation",
+      logo: "/lovable-uploads/36ffa97f-4706-442b-bd0f-d0fc196d0f61.png"
+    },
+    {
+      name: "Lightspark",
+      logo: "/lovable-uploads/22e8d730-c4f2-4a7c-acd1-98e996403216.png"
+    },
+    {
+      name: "Block",
+      logo: "/lovable-uploads/873dcdc1-9cba-4886-a6ba-0b17fcc1dcaf.png"
+    }
+  ];
+
+  // Generate empty sponsor placeholders to make 10 total
+  const emptySponsors = Array(7).fill(null).map((_, index) => ({
+    name: `Sponsor ${index + 4}`,
+    logo: null
+  }));
+
+  const allSponsors = [...sponsors, ...emptySponsors];
+
   return (
     <section id="sponsors" className="section bg-dark-100">
       <div className="container mx-auto">
@@ -11,65 +36,23 @@ const SponsorsSection: React.FC = () => {
           </p>
         </div>
         
-        <div className="mb-16">
-          <h3 className="text-2xl font-bold mb-8 text-center text-white">Gold Sponsors</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-16">
+          {allSponsors.map((sponsor, index) => (
             <div 
-              className="aspect-[3/1] rounded-xl bg-white border border-dark-300 flex items-center justify-center p-6"
+              key={`sponsor-${index}`}
+              className="aspect-square rounded-xl bg-white border border-dark-300 flex items-center justify-center p-6 hover:border-bitcoin transition-colors"
             >
-              <img 
-                src="/lovable-uploads/36ffa97f-4706-442b-bd0f-d0fc196d0f61.png" 
-                alt="Human Rights Foundation" 
-                className="max-h-full max-w-full object-contain"
-              />
+              {sponsor.logo ? (
+                <img 
+                  src={sponsor.logo} 
+                  alt={sponsor.name} 
+                  className="max-h-full max-w-full object-contain"
+                />
+              ) : (
+                <div className="text-lg font-bold text-dark-100/60">Available</div>
+              )}
             </div>
-            <div 
-              className="aspect-[3/1] rounded-xl bg-white border border-dark-300 flex items-center justify-center p-6"
-            >
-              <img 
-                src="/lovable-uploads/22e8d730-c4f2-4a7c-acd1-98e996403216.png" 
-                alt="Lightspark" 
-                className="max-h-full max-w-full object-contain"
-              />
-            </div>
-            <div 
-              className="aspect-[3/1] rounded-xl bg-white border border-dark-300 flex items-center justify-center p-6"
-            >
-              <img 
-                src="/lovable-uploads/873dcdc1-9cba-4886-a6ba-0b17fcc1dcaf.png" 
-                alt="Block" 
-                className="max-h-full max-w-full object-contain"
-              />
-            </div>
-          </div>
-        </div>
-        
-        <div className="mb-16">
-          <h3 className="text-2xl font-bold mb-8 text-center text-white">Silver Sponsors</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[1, 2, 3, 4].map((i) => (
-              <div 
-                key={`silver-${i}`}
-                className="aspect-[3/2] rounded-xl bg-dark-200 border border-dark-300 flex items-center justify-center p-6"
-              >
-                <div className="text-xl font-bold text-white/80">Silver Sponsor</div>
-              </div>
-            ))}
-          </div>
-        </div>
-        
-        <div>
-          <h3 className="text-2xl font-bold mb-8 text-center text-white">Bronze Sponsors</h3>
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <div 
-                key={`bronze-${i}`}
-                className="aspect-square rounded-xl bg-dark-200 border border-dark-300 flex items-center justify-center p-4"
-              >
-                <div className="text-lg font-bold text-white/60">Bronze</div>
-              </div>
-            ))}
-          </div>
+          ))}
         </div>
         
         <div className="mt-16 text-center">
