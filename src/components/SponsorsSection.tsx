@@ -2,7 +2,7 @@
 import React from 'react';
 
 const SponsorsSection: React.FC = () => {
-  // Current sponsors (5 actual sponsors with logos)
+  // Current sponsors (7 actual sponsors with logos)
   const sponsors = [
     {
       name: "Human Rights Foundation",
@@ -23,12 +23,20 @@ const SponsorsSection: React.FC = () => {
     {
       name: "Alby",
       logo: "/lovable-uploads/1038b2be-20ea-4725-b540-4f4e96c83b74.png"
+    },
+    {
+      name: "Fewsats",
+      logo: "/lovable-uploads/d20bf891-efc0-442c-8fad-8377bf47436f.png"
+    },
+    {
+      name: "Hivemind Ventures",
+      logo: "/lovable-uploads/16b945cb-e5fe-4725-af2a-33f28376e526.png"
     }
   ];
 
   // Generate empty sponsor placeholders to make 10 total
-  const emptySponsors = Array(5).fill(null).map((_, index) => ({
-    name: `Sponsor ${index + 6}`,
+  const emptySponsors = Array(3).fill(null).map((_, index) => ({
+    name: `Sponsor ${index + 8}`,
     logo: null
   }));
 
