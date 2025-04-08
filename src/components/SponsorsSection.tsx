@@ -49,7 +49,7 @@ const SponsorsSection: React.FC = () => {
     <section id="sponsors" className="section bg-dark-100">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="section-title text-white">Our <span className="text-bitcoin">Sponsors</span></h2>
+          <h2 className="section-title text-white"> <span className="text-bitcoin">Our Sponsors</span></h2>
           <p className="text-lg text-white/90 max-w-3xl mx-auto">
             We're proud to partner with leading organizations in the Bitcoin ecosystem.
           </p>
