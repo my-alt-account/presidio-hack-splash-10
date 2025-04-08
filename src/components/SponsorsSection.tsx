@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const SponsorsSection: React.FC = () => {
@@ -14,7 +13,7 @@ const SponsorsSection: React.FC = () => {
     },
     {
       name: "Block",
-      logo: "/lovable-uploads/873dcdc1-9cba-4886-a6ba-0b17fcc1dcaf.png"
+      logo: "/lovable-uploads/e9e71786-f19c-406a-a7d2-fd1ec9bf762b.png"
     },
     {
       name: "Lexe",
