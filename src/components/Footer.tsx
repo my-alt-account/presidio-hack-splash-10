@@ -30,6 +30,9 @@ const Footer: React.FC = () => {
               ))}
             </div>
           </div>
+
+          <div>
+          </div>
           
           <div>
             <h3 className="font-bold mb-4 text-white">Event</h3>
@@ -38,6 +41,16 @@ const Footer: React.FC = () => {
               <li><a href="#schedule" className="text-white/90 hover:text-bitcoin transition-colors">Schedule</a></li>
               <li><a href="#speakers" className="text-white/90 hover:text-bitcoin transition-colors">Speakers</a></li>
               <li><a href="#register" className="text-white/90 hover:text-bitcoin transition-colors">Register</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 className="font-bold mb-4 text-white">Resources</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-white/90 hover:text-bitcoin transition-colors">Sponsor Guide</a></li>
+              <li><a href="#" className="text-white/90 hover:text-bitcoin transition-colors">Venue Information</a></li>
+              <li><a href="#" className="text-white/90 hover:text-bitcoin transition-colors">Code of Conduct</a></li>
+              <li><a href="#" className="text-white/90 hover:text-bitcoin transition-colors">FAQ</a></li>
             </ul>
           </div>
           
