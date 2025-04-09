@@ -5,7 +5,7 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-dark-200 py-12">
       <div className="container mx-auto">
-        <div className="grid md:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-3 gap-8"> {/* Changed from 4 to 3 columns */}
           <div>
             <div className="flex items-center gap-2 mb-4">
               <img 
@@ -38,16 +38,6 @@ const Footer: React.FC = () => {
               <li><a href="#schedule" className="text-white/90 hover:text-bitcoin transition-colors">Schedule</a></li>
               <li><a href="#speakers" className="text-white/90 hover:text-bitcoin transition-colors">Speakers</a></li>
               <li><a href="#register" className="text-white/90 hover:text-bitcoin transition-colors">Register</a></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h3 className="font-bold mb-4 text-white">Resources</h3>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-white/90 hover:text-bitcoin transition-colors">Sponsor Guide</a></li>
-              <li><a href="#" className="text-white/90 hover:text-bitcoin transition-colors">Venue Information</a></li>
-              <li><a href="#" className="text-white/90 hover:text-bitcoin transition-colors">Code of Conduct</a></li>
-              <li><a href="#" className="text-white/90 hover:text-bitcoin transition-colors">FAQ</a></li>
             </ul>
           </div>
           
