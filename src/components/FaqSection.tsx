@@ -11,7 +11,7 @@ const FaqSection: React.FC = () => {
   const faqs = [
     {
       question: "Who can participate in the hackathon?",
-      answer: "The hackathon is open to developers, designers, and Bitcoin enthusiasts of all skill levels. Whether you're a seasoned Bitcoin developer or just starting out, you're welcome to join. Teams can consist of 1-4 people."
+      answer: "The hackathon is open to all skill levels. Whether you're a seasoned developer or casual vibe-coder, you're welcome to submit an application."
     },
     {
       question: "Do I need to have a team before the event?",
@@ -19,19 +19,19 @@ const FaqSection: React.FC = () => {
     },
     {
       question: "What can I build during the hackathon?",
-      answer: "You can build any Bitcoin-related project, including but not limited to: Lightning Network applications, wallet solutions, privacy tools, scalability solutions, educational resources, or anything that advances the Bitcoin ecosystem."
+      answer: "The only requirement is that you build on Bitcoin! You can take that challenge anywhere you'd like, but we encourage you to tackle our Focus Areas if you don't have an existing idea you're passionate about."
     },
     {
       question: "Is there an application deadline?",
-      answer: "Yes, applications close on May 15, 2025. We encourage you to apply early as spots are limited and we expect high demand."
+      answer: "There is no application deadline, but we have limited capacity and expect high demand. Therefore, we encourage you to apply as early as possible."
     },
     {
       question: "Are there any registration fees?",
-      answer: "No, participation in the hackathon is completely free for all selected participants. Meals and refreshments will be provided throughout the event."
+      answer: "No, participation in the hackathon is completely free!"
     },
     {
       question: "Will there be hardware available?",
-      answer: "You should bring your own laptop and any specific hardware needed for your project. However, we'll have some specialized Bitcoin hardware (like Lightning nodes) available for teams to use."
+      answer: "You should bring your own laptop and any specific hardware needed for your project."
     },
     {
       question: "How will the projects be judged?",
