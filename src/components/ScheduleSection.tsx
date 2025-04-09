@@ -8,29 +8,25 @@ const ScheduleSection: React.FC = () => {
       date: "May 16",
       events: [
         { time: "6:00 PM", title: "Registration & Welcome" },
-        { time: "6:30 PM", title: "Opening Ceremony" },
-        { time: "7:00 PM", title: "Team Formation & Idea Pitching" },
-        { time: "8:00 PM", title: "Dinner" },
-        { time: "9:00 PM", title: "Lightning Network Workshop" },
-        { time: "10:30 PM", title: "Hacking Begins" },
-        { time: "11:00 PM", title: "Late Night Mentor Support" },
+        { time: "6:30 PM", title: "Day 1 Opening Panel" },
+        { time: "7:00 PM", title: "Team Formation" },
+        { time: "8:00 PM", title: "Hacking Begins" },
       ]
     },
     {
       day: "Day 2",
       date: "May 17",
       events: [
-        { time: "8:00 AM", title: "Breakfast" },
-        { time: "9:00 AM", title: "Daily Standup" },
-        { time: "10:00 AM", title: "Bitcoin Core Technical Talk" },
+        { time: "8:00 AM", title: "Breakfast & Hacking Begins" },
+        { time: "10:00 AM", title: "Panel Discussion" },
         { time: "12:00 PM", title: "Lunch" },
-        { time: "1:00 PM", title: "Hacking Continues" },
-        { time: "3:00 PM", title: "Project Progress Check-in" },
+        { time: "1:00 PM", title: "Panel Discussion" },
+        { time: "3:00 PM", title: "Panel Discussion" },
         { time: "5:00 PM", title: "Final Submissions Due" },
-        { time: "5:30 PM", title: "Project Presentations" },
-        { time: "7:00 PM", title: "Judges Deliberation & Dinner" },
-        { time: "8:00 PM", title: "Awards Ceremony" },
-        { time: "9:00 PM", title: "Closing Remarks & Networking" },
+        { time: "6:00 PM", title: "Project Presentations" },
+        { time: "7:00 PM", title: "Judges Deliberation" },
+        { time: "7:30 PM", title: "Awards Ceremony" },
+        { time: "8:00 PM", title: "Closing Remarks & Networking" },
       ]
     }
   ];
