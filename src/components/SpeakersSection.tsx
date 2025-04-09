@@ -46,10 +46,10 @@ const Speaker: React.FC<SpeakerProps> = ({
 
 const SpeakersSection: React.FC = () => {
   const speakers = [
-    { name: "Alex Johnson", role: "Lead Developer", company: "Bitcoin Core", imagePlaceholder: "AJ", comingSoon: true },
-    { name: "Sarah Williams", role: "CTO", company: "Lightning Labs", imagePlaceholder: "SW", comingSoon: true },
-    { name: "Michael Chen", role: "Founder", company: "Blockchain Capital", imagePlaceholder: "MC", comingSoon: true },
-    { name: "Jessica Rodriguez", role: "Head of Research", company: "Blockstream", imagePlaceholder: "JR", comingSoon: true },
+    { name: "Coming Soon", role: "", company: "", imagePlaceholder: "TBA", comingSoon: true },
+    { name: "Coming Soon", role: "", company: "", imagePlaceholder: "TBA", comingSoon: true },
+    { name: "Coming Soon", role: "", company: "", imagePlaceholder: "TBA", comingSoon: true },
+    { name: "Coming Soon", role: "", company: "", imagePlaceholder: "TBA", comingSoon: true },
   ];
 
   const judges = [
