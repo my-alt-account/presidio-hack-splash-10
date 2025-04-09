@@ -7,13 +7,25 @@ interface SpeakerProps {
   company: string;
   imagePlaceholder?: string;
   imageUrl?: string;
+  comingSoon?: boolean;
 }
 
-const Speaker: React.FC<SpeakerProps> = ({ name, role, company, imagePlaceholder, imageUrl }) => {
+const Speaker: React.FC<SpeakerProps> = ({ 
+  name, 
+  role, 
+  company, 
+  imagePlaceholder, 
+  imageUrl, 
+  comingSoon 
+}) => {
   return (
     <div className="group">
       <div className="aspect-square mb-4 bg-dark-200 rounded-xl overflow-hidden relative border border-dark-300 group-hover:border-bitcoin transition-colors">
-        {imageUrl ? (
+        {comingSoon ? (
+          <div className="absolute inset-0 flex items-center justify-center text-xl font-bold text-white/70 bg-black/50">
+            Coming Soon
+          </div>
+        ) : imageUrl ? (
           <img 
             src={imageUrl} 
             alt={name}
@@ -34,10 +46,10 @@ const Speaker: React.FC<SpeakerProps> = ({ name, role, company, imagePlaceholder
 
 const SpeakersSection: React.FC = () => {
   const speakers = [
-    { name: "Alex Johnson", role: "Lead Developer", company: "Bitcoin Core", imagePlaceholder: "AJ" },
-    { name: "Sarah Williams", role: "CTO", company: "Lightning Labs", imagePlaceholder: "SW" },
-    { name: "Michael Chen", role: "Founder", company: "Blockchain Capital", imagePlaceholder: "MC" },
-    { name: "Jessica Rodriguez", role: "Head of Research", company: "Blockstream", imagePlaceholder: "JR" },
+    { name: "Alex Johnson", role: "Lead Developer", company: "Bitcoin Core", imagePlaceholder: "AJ", comingSoon: true },
+    { name: "Sarah Williams", role: "CTO", company: "Lightning Labs", imagePlaceholder: "SW", comingSoon: true },
+    { name: "Michael Chen", role: "Founder", company: "Blockchain Capital", imagePlaceholder: "MC", comingSoon: true },
+    { name: "Jessica Rodriguez", role: "Head of Research", company: "Blockstream", imagePlaceholder: "JR", comingSoon: true },
   ];
 
   const judges = [
