@@ -50,11 +50,11 @@ const ScheduleSection: React.FC = () => {
             <div 
               key={index} 
               className={`bg-dark-100 rounded-xl border ${
-                index === 3 ? 'border-bitcoin' : 'border-dark-300'
+                index != 3 ? 'border-bitcoin' : 'border-dark-300'
               } overflow-hidden`}
             >
               <div className={`p-6 ${
-                index === 3 ? 'bg-bitcoin text-black font-bold' : 'bg-dark-200 text-white'
+                index != 3 ? 'bg-bitcoin text-black font-bold' : 'bg-dark-200 text-white'
               }`}>
                 <h3 className="text-2xl font-bold">{day.day}</h3>
                 <p>{day.date}, 2025</p>
