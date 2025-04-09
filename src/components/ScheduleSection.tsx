@@ -36,7 +36,7 @@ const ScheduleSection: React.FC = () => {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="section-title text-white">Event <span className="text-bitcoin">Schedule</span></h2>
-          <p className="text-lg text-bitcoin/90 max-w-3xl mx-auto">
+          <p className="text-lg text-presidio-dark/90 max-w-3xl mx-auto">
             Two days of intense building, learning, and connecting. Here's what to expect.
           </p>
         </div>
