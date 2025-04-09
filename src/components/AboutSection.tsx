@@ -43,7 +43,7 @@ const AboutSection: React.FC = () => {
               Whether you're building on Lightning Network, developing wallets, creating smart contracts with RGB or Taproot, or exploring other Bitcoin technologies, this is your chance to make an impact.
             </p>
             <a href="#register" className="inline-flex items-center text-bitcoin hover:underline font-medium">
-              Join the revolution <ArrowRight className="ml-2 h-4 w-4" />
+              Up for the challenge? <ArrowRight className="ml-2 h-4 w-4" />
             </a>
           </div>
           
