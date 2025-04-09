@@ -1,5 +1,5 @@
-
 import React from 'react';
+import { Twitter } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
@@ -19,15 +19,15 @@ const Footer: React.FC = () => {
               The premier Bitcoin hackathon for builders and innovators.
             </p>
             <div className="flex space-x-4">
-              {['Twitter'].map((social) => (
-                <a 
-                  key={social} 
-                  href="#" 
-                  className="h-10 w-10 rounded-full bg-dark-300 flex items-center justify-center hover:bg-bitcoin transition-colors text-white"
-                >
-                  {social[0]}
-                </a>
-              ))}
+              <a 
+                key="Twitter" 
+                href="https://x.com/PresidioBitcoin" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="h-10 w-10 rounded-full bg-dark-300 flex items-center justify-center hover:bg-bitcoin transition-colors text-white"
+              >
+                <Twitter className="h-5 w-5" />
+              </a>
             </div>
           </div>
           
