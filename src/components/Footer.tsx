@@ -18,7 +18,17 @@ const Footer: React.FC = () => {
             <p className="text-white/90 mb-6">
               The premier Bitcoin hackathon for builders and innovators.
             </p>
-
+            <div className="flex space-x-4">
+              {['Twitter'].map((social) => (
+                <a 
+                  key={social} 
+                  href="#" 
+                  className="h-10 w-10 rounded-full bg-dark-300 flex items-center justify-center hover:bg-bitcoin transition-colors text-white"
+                >
+                  {social[0]}
+                </a>
+              ))}
+            </div>
           </div>
           
           <div>
@@ -32,10 +42,17 @@ const Footer: React.FC = () => {
           </div>
           
           <div>
+            <h3 className="font-bold mb-4 text-white">Resources</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-white/90 hover:text-bitcoin transition-colors">FAQ</a></li>
+            </ul>
+          </div>
+          
+          <div>
             <h3 className="font-bold mb-4 text-white">Contact</h3>
             <ul className="space-y-2">
               <li className="text-white/90">Presidio, San Francisco</li>
-              <li><a href="mailto:info@presidiohack.com" className="text-white/90 hover:text-bitcoin transition-colors">info@presidiohack.com</a></li>
+              <li><a href="mailto:hello@presidiobitcoin.org" className="text-white/90 hover:text-bitcoin transition-colors">hello@presidiobitcoin.org</a></li>
             </ul>
           </div>
         </div>
