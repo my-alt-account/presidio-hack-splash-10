@@ -83,7 +83,7 @@ const AboutSection: React.FC = () => {
               </div>
               <div className="flex items-center bg-dark p-4 rounded-lg">
                 <span className="h-2 w-2 rounded-full bg-bitcoin mr-3"></span>
-                <span className="text-white/90">Multi-Party Computation (MPC)</span>
+                <span className="text-white/90">Model Context Protocol (MPC)</span>
               </div>
             </div>
           </div>
