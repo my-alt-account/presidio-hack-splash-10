@@ -152,7 +152,7 @@ const RegisterSection: React.FC = () => {
       <div className="container mx-auto relative z-10">
         <div className="text-center mb-16">
           <h2 className="section-title text-white">Register for the <span className="text-bitcoin">Hackathon</span></h2>
-          <p className="text-lg text-white max-w-3xl mx-auto">
+          <p className="text-lg text-presidio max-w-3xl mx-auto">
             If you're up for the challenge, join us for an unforgettable weekend of building, learning, and connecting.
           </p>
         </div>
