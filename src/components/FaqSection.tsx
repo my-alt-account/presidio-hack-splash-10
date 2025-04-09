@@ -72,10 +72,10 @@ const FaqSection: React.FC = () => {
               Still have questions? Reach out to us directly.
             </p>
             <a 
-              href="mailto:info@presidiohack.com" 
+              href="mailto:hello@presidiobitcoin.org" 
               className="text-bitcoin hover:underline"
             >
-              info@presidiohack.com
+              hello@presidiobitcoin.org
             </a>
           </div>
         </div>
