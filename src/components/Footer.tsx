@@ -18,17 +18,7 @@ const Footer: React.FC = () => {
             <p className="text-white/90 mb-6">
               The premier Bitcoin hackathon for builders and innovators.
             </p>
-            <div className="flex space-x-4">
-              {['Twitter', 'GitHub', 'Discord', 'LinkedIn'].map((social) => (
-                <a 
-                  key={social} 
-                  href="#" 
-                  className="h-10 w-10 rounded-full bg-dark-300 flex items-center justify-center hover:bg-bitcoin transition-colors text-white"
-                >
-                  {social[0]}
-                </a>
-              ))}
-            </div>
+
           </div>
           
           <div>
