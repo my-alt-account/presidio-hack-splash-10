@@ -4,16 +4,16 @@ import { ArrowRight } from 'lucide-react';
 const AboutSection: React.FC = () => {
   const features = [
     {
-      title: "72 Hours of Building",
-      description: "Immerse yourself in an intensive coding experience with like-minded Bitcoin enthusiasts."
+      title: "24+ Hours of Building",
+      description: "Immerse yourself in an intensive coding experience with like-minded Bitcoin and AI hackers."
     },
     {
-      title: "$50,000 in Prizes",
-      description: "Compete for substantial prizes and recognition from the Bitcoin community."
+      title: "$10,000+ in Prizes",
+      description: "Compete for substantial prizes and, possibly, job opportunities in the Bitcoin ecosystem."
     },
     {
       title: "Expert Mentorship",
-      description: "Get guidance from Bitcoin Core developers and industry leaders."
+      description: "Get guidance from Bitcoin, Lightning, and Nostr industry leaders."
     },
     {
       title: "Networking",
@@ -29,7 +29,7 @@ const AboutSection: React.FC = () => {
             <span className="text-bitcoin">About The Hackathon</span>
           </h2>
           <p className="text-lg text-white/90 max-w-3xl mx-auto">
-            Bitcoin Hackathon brings together developers, designers, and entrepreneurs to build the next generation of Bitcoin applications and infrastructure.
+            The Presidio Bitcoin Hackathon brings together developers, designers, and entrepreneurs to build the next generation of Bitcoin applications and infrastructure.
           </p>
         </div>
 
@@ -71,19 +71,19 @@ const AboutSection: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="flex items-center bg-dark p-4 rounded-lg">
                 <span className="h-2 w-2 rounded-full bg-bitcoin mr-3"></span>
-                <span className="text-white/90">Lightning Network Innovations</span>
+                <span className="text-white/90">Lightning Network</span>
               </div>
               <div className="flex items-center bg-dark p-4 rounded-lg">
                 <span className="h-2 w-2 rounded-full bg-bitcoin mr-3"></span>
-                <span className="text-white/90">Privacy & Security</span>
+                <span className="text-white/90">Nostr</span>
               </div>
               <div className="flex items-center bg-dark p-4 rounded-lg">
                 <span className="h-2 w-2 rounded-full bg-bitcoin mr-3"></span>
-                <span className="text-white/90">Scaling Solutions</span>
+                <span className="text-white/90">Autonomous Agents</span>
               </div>
               <div className="flex items-center bg-dark p-4 rounded-lg">
                 <span className="h-2 w-2 rounded-full bg-bitcoin mr-3"></span>
-                <span className="text-white/90">Developer Tools</span>
+                <span className="text-white/90">Multi-Party Computation (MPC)</span>
               </div>
             </div>
           </div>
