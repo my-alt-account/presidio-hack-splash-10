@@ -17,9 +17,9 @@ const HeroSection: React.FC = () => {
         <div className="flex flex-col items-center justify-between gap-8">
           {/* Center aligned content */}
           <div className="flex flex-col items-center text-center w-full max-w-4xl mx-auto">
-            {/* Image now appears at the top with added top margin */}
-            <div className="w-full max-w-2xl mb-8 mt-12">  {/* Added mt-12 for top margin */}
-              <div className="relative rounded-xl overflow-hidden shadow-2xl">
+            {/* Image now appears at the top with reduced top margin */}
+            <div className="w-full max-w-xl mb-8 mt-8">  {/* Reduced max-w to xl and mt to 8 */}
+              <div className="relative rounded-xl overflow-hidden shadow-xl">  {/* Slightly reduced shadow */}
                 <img 
                   src="/lovable-uploads/5f563dc5-4295-4afe-9a4a-73cc9fe63005.png" 
                   alt="Presidio with Golden Gate Bridge view" 
