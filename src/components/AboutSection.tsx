@@ -37,10 +37,10 @@ const AboutSection: React.FC = () => {
           <div>
             <h3 className="text-2xl font-bold mb-4 text-white">Our Mission</h3>
             <p className="text-white/90 mb-6">
-              Presidio Bitcoin is dedicated to advancing Bitcoin adoption through education, development, and community building. Our hackathon provides a platform for innovators to create solutions that leverage Bitcoin's potential.
+              Presidio Bitcoin aims to accelerate bitcoin adoption by providing bitcoiners with a place to work, connect, and innovate. Inspired by the success of bitcoin hubs in Nashville, Austin, New York, and other cities worldwide, we decided to build our own in the world’s tech capital. 
             </p>
             <p className="text-white/90 mb-6">
-              Whether you're building on Lightning Network, developing wallets, creating smart contracts with RGB or Taproot, or exploring other Bitcoin technologies, this is your chance to make an impact.
+              Whether you're an experienced developer or a newcomer interested in building on Bitcoin, this is your chance to dive deep and make an impact.
             </p>
             <a href="#register" className="inline-flex items-center text-bitcoin hover:underline font-medium">
               Up for the challenge? <ArrowRight className="ml-2 h-4 w-4" />
