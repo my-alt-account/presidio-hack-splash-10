@@ -6,6 +6,11 @@
 @tailwind components;
 @tailwind utilities;
 
+.text-presidio {
+  font-family: "Sansita", sans-serif;
+  font-weight: 700;  
+}
+
 .sansita-regular {
   font-family: "Sansita", sans-serif;
   font-weight: 400;
