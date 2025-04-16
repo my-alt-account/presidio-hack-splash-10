@@ -7,8 +7,8 @@
 @tailwind utilities;
 
 .text-presidio {
-  font-family: "Sansita", sans-serif;
-  font-weight: 700;  
+  font-family: "Sansita"!important;
+  font-weight: 700!important;  
 }
 
 .sansita-regular {
